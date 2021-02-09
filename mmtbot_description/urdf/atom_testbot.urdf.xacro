@@ -14,8 +14,8 @@
   <xacro:property name="table_dimension_z" value="0.015"/>
 
   <!-- Include other files-->
-  <xacro:include filename="$(find atom_testbot_description)/urdf/properties.xacro"/>
-  <xacro:include filename="$(find atom_testbot_description)/urdf/table.macro.xacro"/>
+  <xacro:include filename="$(find mmtbot_description)/urdf/properties.xacro"/>
+  <xacro:include filename="$(find mmtbot_description)/urdf/table.macro.xacro"/>
   <xacro:include filename="$(find hector_sensors_description)/urdf/asus_camera.urdf.xacro"/>
   <xacro:include filename="$(find ur_e_description)/urdf/astra.urdf.xacro" />
   <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />

@@ -2,7 +2,7 @@
 
     <!--Load robot xacro into robot_description ros parameter.-->
     <!-- Nested substitution of args, check: https://answers.ros.org/question/35283/nested-substitution-args-in-launch-files/-->
-    <param name="robot_description" command="$(find xacro)/xacro '$(find atom_testbot_description)/urdf/atom_testbot.urdf.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find mmtbot_description)/urdf/mmtbot.urdf.xacro'"/>
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
