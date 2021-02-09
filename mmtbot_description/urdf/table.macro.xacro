@@ -5,21 +5,21 @@
     <xacro:macro name="table_leg_macro" params="name parent *origin height leg_radius">
         <link name="${parent}_${name}">
             <visual>
-                <origin xyz="0.0 0.0 ${-height/2}" rpy="0 0 0" />
+                <origin xyz="0.0 0.0 ${height/2}" rpy="0 0 0" />
                 <geometry>
                     <cylinder radius="${leg_radius}" length="${height}" />
                 </geometry>
                 <material name="grey"/>
             </visual>
             <collision>
-                <origin xyz="0.0 0.0 ${-height/2}" rpy="0 0 0" />
+                <origin xyz="0.0 0.0 ${height/2}" rpy="0 0 0" />
                 <geometry>
                     <cylinder radius="${leg_radius}" length="${height}" />
                 </geometry>
             </collision>
             <inertial>
                 <mass value="1.0" />
-                <origin xyz="0.0 0.0 ${-height/2}" rpy="0 0 0" />
+                <origin xyz="0.0 0.0 ${height/2}" rpy="0 0 0" />
                 <inertia ixx="0.1" ixy="0"  ixz="0"
                          iyy="0.1" iyz="0"
                          izz="0.01" />
@@ -47,12 +47,19 @@
                                             tabletop_thickness leg_radius">
 
         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
-        <!-- %%%%%%%%%%%%%%%%% Links %%%%%%%%%%%%%%%%%%%%%-->
-        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
         <!-- table link-->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
         <link name="${name}"/>
 
+        <joint name="world_to_${name}" type="fixed">
+            <parent link="${parent}"/>
+            <child link="${name}" />
+            <xacro:insert_block name="origin"/>
+        </joint>
+
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
         <!-- tabletop link-->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
         <link name="tabletop_${name}">
             <visual>
                 <origin xyz="0 0 ${-tabletop_thickness/2}" rpy="0 0 0"/>
@@ -83,39 +90,30 @@
             <selfCollide>false</selfCollide>
         </gazebo>
 
-        <!-- Define the four legs -->
-        <xacro:table_leg_macro name="leg1" parent="tabletop_${name}" height="${height}" leg_radius="${leg_radius}">
-            <origin xyz="${-width/2+leg_radius} ${lenght/2-leg_radius} 0" rpy="0 0 0"/>
-        </xacro:table_leg_macro>
-
-        <xacro:table_leg_macro name="leg2" parent="tabletop_${name}" height="${height}" leg_radius="${leg_radius}">
-            <origin xyz="${width/2-leg_radius} ${lenght/2-leg_radius} 0" rpy="0 0 0"/>
-        </xacro:table_leg_macro>
-
-        <xacro:table_leg_macro name="leg3" parent="tabletop_${name}" height="${height}" leg_radius="${leg_radius}">
-            <origin xyz="${width/2-leg_radius} ${-lenght/2+leg_radius} 0" rpy="0 0 0"/>
-        </xacro:table_leg_macro>
-
-        <xacro:table_leg_macro name="leg4" parent="tabletop_${name}" height="${height}" leg_radius="${leg_radius}">
-            <origin xyz="${-width/2+leg_radius} ${-lenght/2+leg_radius} 0" rpy="0 0 0"/>
-        </xacro:table_leg_macro>
-
-        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
-        <!-- %%%%%%%%%%%%%%%%% Joints %%%%%%%%%%%%%%%%%%%%-->
-        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
-
-        <!-- World to table1 -->
-        <joint name="world_to_${name}" type="fixed">
-            <parent link="${parent}"/>
-            <child link="${name}" />
-            <xacro:insert_block name="origin"/>
-        </joint>
-
-        <joint name="${name}_to_tabletop_${name}" type="fixed">
+         <joint name="${name}_to_tabletop_${name}" type="fixed">
             <parent link="${name}"/>
             <child link="tabletop_${name}" />
             <origin xyz="0 0 ${height}" rpy="0 0 0"/>
         </joint>
+
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+        <!-- Define the four legs -->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+        <xacro:table_leg_macro name="leg1" parent="${name}" height="${height}" leg_radius="${leg_radius}">
+            <origin xyz="${-width/2+leg_radius} ${lenght/2-leg_radius} 0" rpy="0 0 0"/>
+        </xacro:table_leg_macro>
+
+        <xacro:table_leg_macro name="leg2" parent="${name}" height="${height}" leg_radius="${leg_radius}">
+            <origin xyz="${width/2-leg_radius} ${lenght/2-leg_radius} 0" rpy="0 0 0"/>
+        </xacro:table_leg_macro>
+
+        <xacro:table_leg_macro name="leg3" parent="${name}" height="${height}" leg_radius="${leg_radius}">
+            <origin xyz="${width/2-leg_radius} ${-lenght/2+leg_radius} 0" rpy="0 0 0"/>
+        </xacro:table_leg_macro>
+
+        <xacro:table_leg_macro name="leg4" parent="${name}" height="${height}" leg_radius="${leg_radius}">
+            <origin xyz="${-width/2+leg_radius} ${-lenght/2+leg_radius} 0" rpy="0 0 0"/>
+        </xacro:table_leg_macro>
 
     </xacro:macro>
 </robot>

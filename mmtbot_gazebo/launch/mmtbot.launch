@@ -12,10 +12,7 @@
   </include>
 
   <!-- send robot urdf to param server -->
-<!--  <include file="$(find mmtbot_description)/launch/upload.launch">-->
-<!--    <arg name="limited" value="$(arg limited)"/>-->
-<!--  </include>-->
-    <include file="$(find ur_e_description)/launch/ur10e_upload.launch">
+  <include file="$(find mmtbot_description)/launch/upload.launch">
     <arg name="limited" value="$(arg limited)"/>
   </include>
 
