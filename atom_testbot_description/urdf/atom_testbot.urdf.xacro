@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<robot name="p_moliveira" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--  Xacro description of turtlebot robot waffle pi used to play team hunt.-->
+  <!--  Miguel Riem Oliveira-->
+  <!--  PARI, November 2020-->
+
+  <!--Args are local, properties are global, so we copy the values of the arguments to the properties-->
+
+  <!--Properties are global so they can be viewed from inside the included xacros-->
+  <!--  args are used with $(arg arg_name), properties are used as ${property_name}-->
+  <xacro:property name="table_height" value="0.795"/>
+  <xacro:property name="table_dimension_x" value="1.25"/>
+  <xacro:property name="table_dimension_y" value="0.9"/>
+  <xacro:property name="table_dimension_z" value="0.015"/>
+
+  <!-- Include other files-->
+  <xacro:include filename="$(find atom_testbot_description)/urdf/properties.xacro"/>
+  <xacro:include filename="$(find atom_testbot_description)/urdf/table.macro.xacro"/>
+  <xacro:include filename="$(find hector_sensors_description)/urdf/asus_camera.urdf.xacro"/>
+  <xacro:include filename="$(find ur_e_description)/urdf/astra.urdf.xacro" />
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+  <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
+
+  <!-- Links and joints-->
+  <link name="world"/>
+
+  <!--  Place table 1 in the scene-->
+  <xacro:table_macro table_name="table_1" parent="world" dx="${table_dimension_x}" dy="${table_dimension_y}" dz="${table_dimension_z}">
+    <origin xyz="3 0 ${table_height}" rpy="0 0 0" />
+  </xacro:table_macro>
+
+  <xacro:asus_camera_model name="camera_1" parent="table_1">
+    <origin xyz="0 0 0.5" rpy="0 0.3 0" />
+  </xacro:asus_camera_model>
+
+  <xacro:ur10e_robot prefix="" joint_limited="false"/>
+
+  <xacro:sensor_astra parent="base_link" prefix="camera">
+      <!-- NOTE: CHANGE THIS -->
+      <origin xyz="-1 0 1" rpy="0 0 0"/>
+      <!-- <origin xyz="0.041311319304504816 -0.06402544453787727 0.044527571211305426" rpy="3.13766148064 -0.00787797070144 0.000110993634886"/> -->
+  </xacro:sensor_astra>
+
+  <joint name="world_joint" type="fixed">
+    <parent link="table_1" />
+    <child link = "base_link" />
+    <origin xyz="0.2 0.2 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>
