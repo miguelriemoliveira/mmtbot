@@ -1,1 +1,3 @@
-# atom_tbot
+# mmtbot
+
+Multi-modal test bot
