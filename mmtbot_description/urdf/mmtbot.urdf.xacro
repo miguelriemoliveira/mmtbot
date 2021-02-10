@@ -33,7 +33,7 @@
     <xacro:table_macro name="table1" parent="world" width="${table1_width}"
                        lenght="${table1_lenght}" height="${table1_height}"
                        tabletop_thickness="${table1_tabletop_thickness}" leg_radius="${table1_leg_radius}">
-        <origin xyz="1.5 0 0" rpy="0 0 ${pi/2}" />
+        <origin xyz="-1 0 0" rpy="0 0 ${pi/2}" />
     </xacro:table_macro>
 
     <!--  Manipulator-->
@@ -47,9 +47,13 @@
     </joint>
 
     <!-- Hand eye camera-->
-    <xacro:asus_camera_model name="camera1" parent="ee_link">
-        <origin xyz="0 0 0.06" rpy="0 0.3 0" />
-    </xacro:asus_camera_model>
+<!--    <xacro:asus_camera_model name="camera1" parent="ee_link">-->
+<!--        <origin xyz="0 0 0.06" rpy="0 0.3 0" />-->
+<!--    </xacro:asus_camera_model>-->
+
+    <xacro:sensor_astra prefix="camera1" parent="ee_link">
+        <origin xyz="-0.02 0.05 0.07" rpy="0 0.2 0" />
+    </xacro:sensor_astra>
 
     <!--  <xacro:sensor_astra parent="base_link" prefix="camera">-->
     <!--    &lt;!&ndash; NOTE: CHANGE THIS &ndash;&gt;-->
@@ -59,7 +63,7 @@
 
     <!-- Place tripod1 in the scene-->
     <xacro:tripod_macro name="tripod1" parent="world">
-        <origin xyz="-0.5 0 0" rpy="0 0 ${pi/3}" />
+        <origin xyz="1 0 0" rpy="0 0 ${2/3*pi}" />
     </xacro:tripod_macro>
 
     <!-- Velodyne Support-->
