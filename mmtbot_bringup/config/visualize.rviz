@@ -12,6 +12,7 @@ Panels:
         - /Image1
         - /DepthCloud1
         - /DepthCloud1/Auto Size1
+        - /PointCloud21
       Splitter Ratio: 0.5084986090660095
     Tree Height: 435
   - Class: rviz/Selection
@@ -87,7 +88,12 @@ Visualization Manager:
         Color Enabled: false
         Interrupt Display: false
         Links:
-          3dlidar_frame:
+          3dlidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          3dlidar_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -263,7 +269,12 @@ Visualization Manager:
       Scene Robot:
         Attached Body Color: 150; 50; 150
         Links:
-          3dlidar_frame:
+          3dlidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          3dlidar_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -408,8 +419,10 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        3dlidar_frame:
-          Value: false
+        3dlidar:
+          Value: true
+        3dlidar_base_link:
+          Value: true
         All Enabled: false
         base:
           Value: true
@@ -509,8 +522,9 @@ Visualization Manager:
                               {}
           tripod1:
             tripod1_plate:
-              3dlidar_frame:
-                {}
+              3dlidar_base_link:
+                3dlidar:
+                  {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image
@@ -593,6 +607,36 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 0
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /velodyne_points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -621,7 +665,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.8019824028015137
+      Distance: 4.125276565551758
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -629,17 +673,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.8902660608291626
-        Y: -0.40935903787612915
-        Z: 0.261359840631485
+        X: -0.7655074000358582
+        Y: 1.5369234085083008
+        Z: 0.7890639901161194
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6597960591316223
+      Pitch: 0.28479623794555664
       Target Frame: <Fixed Frame>
-      Yaw: 4.868603229522705
+      Yaw: 1.4754201173782349
     Saved: ~
 Window Geometry:
   Displays:
