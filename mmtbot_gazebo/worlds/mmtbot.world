@@ -10,7 +10,7 @@
     <include>
       <uri>model://charuco_800x600</uri>
       <name>charuco_800x600</name>
-      <pose>0.430922 2.631433 1.175573 1.597567 0 0 </pose>
+      <pose>0 0 0 0 0 0 </pose>
     </include>
   </world>
 </sdf>
