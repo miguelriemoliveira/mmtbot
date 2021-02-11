@@ -1,0 +1,233 @@
+#!/usr/bin/env python3
+
+# stdlib
+import sys
+import argparse
+
+# 3rd-party
+import rospkg
+import rospy
+
+from colorama import Fore, Style
+from std_msgs.msg import Header, ColorRGBA
+from geometry_msgs.msg import Point
+from gazebo_msgs.msg import ModelState, ModelStates
+from geometry_msgs.msg import Point, Pose, Vector3, Quaternion
+from interactive_markers.interactive_marker_server import *
+from interactive_markers.menu_handler import *
+from visualization_msgs.msg import *
+from atom_core.ros_utils import filterLaunchArguments
+
+from gazebo_msgs.srv import SetModelState, GetModelState, GetModelStateRequest
+from tf2_ros import TransformBroadcaster
+br = TransformBroadcaster()
+
+# local packages
+
+frame_id = 'pattern'
+model_name = 'charuco_800x600'
+server = None
+menu_handler = MenuHandler()
+
+def makeBox( msg ):
+    marker = Marker()
+
+    marker.type = Marker.SPHERE
+    marker.scale.x = msg.scale * 0.45
+    marker.scale.y = msg.scale * 0.45
+    marker.scale.z = msg.scale * 0.45
+    marker.color.r = 0.5
+    marker.color.g = 0.5
+    marker.color.b = 0.5
+    marker.color.a = 0.0
+    return marker
+
+def makeBoxControl( msg ):
+    control =  InteractiveMarkerControl()
+    control.always_visible = True
+    control.markers.append( makeBox(msg) )
+    msg.controls.append( control )
+    return control
+
+
+def make6DofMarker(fixed, interaction_mode, pose, show_6dof=False):
+    int_marker = InteractiveMarker()
+    int_marker.header.frame_id = "world"
+    int_marker.pose = pose
+    int_marker.scale = 0.5
+
+    int_marker.name = "simple_6dof"
+    int_marker.description = "Simple 6-DOF Control"
+
+    # insert a box
+    makeBoxControl(int_marker)
+    int_marker.controls[0].interaction_mode = interaction_mode
+
+    if fixed:
+        int_marker.name += "_fixed"
+        int_marker.description += "\n(fixed orientation)"
+
+    if interaction_mode != InteractiveMarkerControl.NONE:
+        control_modes_dict = {
+            InteractiveMarkerControl.MOVE_3D: "MOVE_3D",
+            InteractiveMarkerControl.ROTATE_3D: "ROTATE_3D",
+            InteractiveMarkerControl.MOVE_ROTATE_3D: "MOVE_ROTATE_3D"}
+        int_marker.name += "_" + control_modes_dict[interaction_mode]
+        int_marker.description = "3D Control"
+        if show_6dof:
+            int_marker.description += " + 6-DOF controls"
+        int_marker.description += "\n" + control_modes_dict[interaction_mode]
+
+    if show_6dof:
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 1
+        control.orientation.y = 0
+        control.orientation.z = 0
+        control.name = "rotate_x"
+        control.interaction_mode = InteractiveMarkerControl.ROTATE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 1
+        control.orientation.y = 0
+        control.orientation.z = 0
+        control.name = "move_x"
+        control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 0
+        control.orientation.y = 1
+        control.orientation.z = 0
+        control.name = "rotate_z"
+        control.interaction_mode = InteractiveMarkerControl.ROTATE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 0
+        control.orientation.y = 1
+        control.orientation.z = 0
+        control.name = "move_z"
+        control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 0
+        control.orientation.y = 0
+        control.orientation.z = 1
+        control.name = "rotate_y"
+        control.interaction_mode = InteractiveMarkerControl.ROTATE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+        control = InteractiveMarkerControl()
+        control.orientation.w = 1
+        control.orientation.x = 0
+        control.orientation.y = 0
+        control.orientation.z = 1
+        control.name = "move_y"
+        control.interaction_mode = InteractiveMarkerControl.MOVE_AXIS
+        if fixed:
+            control.orientation_mode = InteractiveMarkerControl.FIXED
+        int_marker.controls.append(control)
+
+    server.insert(int_marker, processFeedback)
+    menu_handler.apply(server, int_marker.name)
+
+def processFeedback( feedback ):
+    s = "feedback from marker '" + feedback.marker_name
+    s += "' / control '" + feedback.control_name + "'"
+
+    if feedback.event_type == InteractiveMarkerFeedback.POSE_UPDATE:
+        rospy.loginfo( s + ": pose changed")
+        print('new pose = ' + str(feedback.pose))
+
+        state_msg = ModelState()
+        state_msg.model_name = model_name
+        state_msg.pose.position.x = feedback.pose.position.x
+        state_msg.pose.position.y = feedback.pose.position.y
+        state_msg.pose.position.z = feedback.pose.position.z
+        state_msg.pose.orientation.x = feedback.pose.orientation.x
+        state_msg.pose.orientation.y = feedback.pose.orientation.y
+        state_msg.pose.orientation.z = feedback.pose.orientation.z
+        state_msg.pose.orientation.w = feedback.pose.orientation.w
+        state_msg.reference_frame = 'world'
+
+
+        print('set_model_state to:\n' + str(state_msg))
+
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state(state_msg)
+        except rospy.ServiceException:
+            print("Service call failed: " )
+
+
+        t = geometry_msgs.msg.TransformStamped()
+        t.header.stamp = rospy.Time.now()
+        t.header.frame_id = "world"
+        t.child_frame_id = frame_id
+        
+        t.transform.translation.x = feedback.pose.position.x
+        t.transform.translation.y = feedback.pose.position.y
+        t.transform.translation.z = feedback.pose.position.z
+        t.transform.rotation.x = feedback.pose.orientation.x
+        t.transform.rotation.y = feedback.pose.orientation.y
+        t.transform.rotation.z = feedback.pose.orientation.z
+        t.transform.rotation.w = feedback.pose.orientation.w
+
+        br.sendTransform(t)
+
+    server.applyChanges()
+
+
+if __name__ == "__main__":
+    # Parse command line arguments
+    ap = argparse.ArgumentParser(description='Interactive manipulation of pattern pattern in rviz.')
+    # ap.add_argument("-c", "--calibration_file", type=str, required=True, help='full path to calibration file.')
+    args = vars(ap.parse_args(args=filterLaunchArguments(sys.argv)))
+
+    rospy.init_node("interactive_pattern")
+
+    # create a timer to update the published transforms
+    # rospy.Timer(rospy.Duration(0.01), frameCallback)
+
+    server = InteractiveMarkerServer("interactive_pattern")
+
+
+    pose = Pose(position=Point(x=0, y=0, z=0), orientation=Quaternion(x=0, y=0, z=0, w=1))
+    make6DofMarker(False, InteractiveMarkerControl.MOVE_3D, pose, True)
+
+    server.applyChanges()
+
+    markers = MarkerArray()
+    m = Marker(header=Header(frame_id=frame_id, stamp=rospy.Time.now()),
+               ns=model_name, id=0, frame_locked=True,
+               type=Marker.MESH_RESOURCE, action=Marker.ADD, lifetime=rospy.Duration(0),
+               pose=Pose(position=Point(x=0, y=0, z=0),
+                         orientation=Quaternion(x=0, y=0, z=0, w=1)),
+               scale=Vector3(x=1.0, y=1.0, z=1.0),
+               color=ColorRGBA(r=1, g=1, b=1, a=0.5))
+
+    m.mesh_resource = 'package://mmtbot_gazebo/models/charuco_800x600/charuco_800x600.dae'
+    m.mesh_use_embedded_materials = True
+    markers.markers.append(m)
+    pub = rospy.Publisher('~pattern', MarkerArray, queue_size=0, latch=True)
+    pub.publish(markers)
+
+
+    rospy.spin()
