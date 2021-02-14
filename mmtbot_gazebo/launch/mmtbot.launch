@@ -33,4 +33,6 @@
   <!-- start a fake weiss gripper -->
   <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>
 
+  <!-- Start interactive positioning of pattern -->
+  <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>
 </launch>

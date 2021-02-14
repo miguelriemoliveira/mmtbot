@@ -45,7 +45,7 @@
         <origin xyz="0.0 0.0 0.001" rpy="0.0 0.0 0.0" />
     </joint>
 
-    <xacro:sensor_astra prefix="camera1" parent="ee_link">
+    <xacro:sensor_astra prefix="hand_camera" parent="ee_link">
         <origin xyz="-0.02 0.05 0.07" rpy="0 0.2 0" />
     </xacro:sensor_astra>
 
@@ -61,7 +61,12 @@
     </xacro:tripod_macro>
 
     <!-- Put 3d lidar in the scene-->
-    <xacro:VLP-16 name="3dlidar" parent="tripod1_plate">
-        <origin xyz="0 0 0.04" rpy="0 ${M_PI/10} 0" />
+    <xacro:VLP-16 name="lidar" parent="tripod1_left_support">
+        <origin xyz="0 0 0.001" rpy="0 0 0" />
     </xacro:VLP-16>
+
+    <xacro:sensor_astra prefix="world_camera" parent="tripod1_right_support">
+        <origin xyz="0.02 0.07 0.015" rpy="0 0.0 0" />
+    </xacro:sensor_astra>
+
 </robot>

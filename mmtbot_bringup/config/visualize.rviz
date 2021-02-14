@@ -6,8 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /MotionPlanning1/Planning Request1
+        - /TF1
         - /TF1/Frames1
-        - /MarkerArray1/Status1
       Splitter Ratio: 0.29612404108047485
     Tree Height: 435
   - Class: rviz/Selection
@@ -128,6 +128,27 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          camera2_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera2_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           ee_link:
             Alpha: 1
             Show Axes: false
@@ -196,7 +217,16 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          tripod1_left_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           tripod1_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod1_right_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -309,6 +339,27 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          camera2_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera2_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera2_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           ee_link:
             Alpha: 1
             Show Axes: false
@@ -377,7 +428,16 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          tripod1_left_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           tripod1_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod1_right_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -415,12 +475,12 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         3dlidar:
-          Value: true
+          Value: false
         3dlidar_base_link:
           Value: true
         All Enabled: false
         base:
-          Value: true
+          Value: false
         base_link:
           Value: false
         camera1_depth_frame:
@@ -428,10 +488,20 @@ Visualization Manager:
         camera1_depth_optical_frame:
           Value: false
         camera1_link:
-          Value: true
+          Value: false
         camera1_rgb_frame:
           Value: false
         camera1_rgb_optical_frame:
+          Value: false
+        camera2_depth_frame:
+          Value: false
+        camera2_depth_optical_frame:
+          Value: false
+        camera2_link:
+          Value: true
+        camera2_rgb_frame:
+          Value: false
+        camera2_rgb_optical_frame:
           Value: false
         ee_link:
           Value: false
@@ -441,8 +511,6 @@ Visualization Manager:
           Value: false
         left_finger_link:
           Value: false
-        pattern:
-          Value: true
         right_finger_link:
           Value: false
         shoulder_link:
@@ -463,8 +531,12 @@ Visualization Manager:
           Value: false
         tripod1:
           Value: false
+        tripod1_left_support:
+          Value: false
         tripod1_plate:
           Value: false
+        tripod1_right_support:
+          Value: true
         upper_arm_link:
           Value: false
         world:
@@ -476,15 +548,13 @@ Visualization Manager:
         wrist_3_link:
           Value: false
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
         world:
-          pattern:
-            {}
           table1:
             table1_leg1:
               {}
@@ -521,9 +591,18 @@ Visualization Manager:
                               {}
           tripod1:
             tripod1_plate:
-              3dlidar_base_link:
-                3dlidar:
-                  {}
+              tripod1_left_support:
+                3dlidar_base_link:
+                  3dlidar:
+                    {}
+              tripod1_right_support:
+                camera2_link:
+                  camera2_depth_frame:
+                    camera2_depth_optical_frame:
+                      {}
+                  camera2_rgb_frame:
+                    camera2_rgb_optical_frame:
+                      {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image
@@ -571,8 +650,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 0.2649582326412201
-        Min Value: -0.8084454536437988
+        Max Value: 0.27411767840385437
+        Min Value: -0.8079922199249268
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -612,7 +691,7 @@ Visualization Manager:
       Marker Topic: /interactive_pattern/pattern
       Name: MarkerArray
       Namespaces:
-        charuco_800x600: true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
@@ -643,7 +722,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.2733640670776367
+      Distance: 1.127087950706482
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -651,17 +730,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -1.898833990097046
-        Y: 2.1093947887420654
-        Z: 0.08203698694705963
+        X: -0.23092120885849
+        Y: 1.9523118734359741
+        Z: 0.3578540086746216
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4147964417934418
+      Pitch: 0.5897963047027588
       Target Frame: <Fixed Frame>
-      Yaw: 1.2754205465316772
+      Yaw: 3.4854297637939453
     Saved: ~
 Window Geometry:
   Displays:
