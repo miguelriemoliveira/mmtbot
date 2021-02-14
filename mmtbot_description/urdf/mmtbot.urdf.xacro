@@ -46,7 +46,7 @@
     </joint>
 
     <xacro:sensor_astra prefix="hand_camera" parent="ee_link">
-        <origin xyz="-0.02 0.05 0.07" rpy="0 0.2 0" />
+        <origin xyz="-0.02 0.05 0.07" rpy="0 0.0 0" />
     </xacro:sensor_astra>
 
     <!--  <xacro:sensor_astra parent="base_link" prefix="camera">-->

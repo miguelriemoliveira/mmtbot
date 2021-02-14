@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
+    <!-- By default, we do not start a database (it can be large) -->
+    <arg name="db" default="false" />
     <arg name="sim" default="false" doc="Launch a simulated environment for the ur10e"/>
     <arg name="gui" default="false" doc="Starts gazebo gui" />
 
@@ -28,7 +30,14 @@
         <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch">
             <arg name="config" value="true"/>
         </include>
+
+
+        <!-- If database loading was enabled, start mongodb as well -->
+<!--        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>-->
+        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch"/>
     </group>
+
+
 
 </launch>
 
