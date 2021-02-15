@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<robot name="mmtbot" xmlns:xacro="http://ros.org/wiki/xacro">
+    <!--  Miguel Riem Oliveira-->
+    <!--  February 2021-->
+
+    <!--Args are local, properties are global, so we copy the values of the arguments to the properties-->
+
+    <!--Properties are global so they can be viewed from inside the included xacros-->
+    <!--  args are used with $(arg arg_name), properties are used as ${property_name}-->
+    <xacro:property name="table1_height" value="0.795"/>
+    <xacro:property name="table1_width" value=".9"/>
+    <xacro:property name="table1_lenght" value="0.9"/>
+    <xacro:property name="table1_tabletop_thickness" value="0.015"/>
+    <xacro:property name="table1_leg_radius" value="0.02"/>
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <!-- Include other files-->
+    <xacro:include filename="$(find mmtbot_description)/urdf/properties.xacro"/>
+    <xacro:include filename="$(find mmtbot_description)/urdf/table.macro.xacro"/>
+    <xacro:include filename="$(find mmtbot_description)/urdf/tripod.macro.xacro"/>
+<!--    <xacro:include filename="$(find hector_sensors_description)/urdf/asus_camera.urdf.xacro"/>-->
+<!--    <xacro:include filename="$(find hector_sensors_description)/urdf/vlp16.urdf.xacro"/>-->
+    <xacro:include filename="$(find ur_e_description)/urdf/astra.urdf.xacro" />
+    <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+    <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
+    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+
+    <!-- Links and joints-->
+    <link name="world"/>
+
+    <!-- Place table 1 in the scene-->
+    <xacro:table_macro name="table1" parent="world" width="${table1_width}"
+                       lenght="${table1_lenght}" height="${table1_height}"
+                       tabletop_thickness="${table1_tabletop_thickness}" leg_radius="${table1_leg_radius}">
+        <origin xyz="-1 0 0" rpy="0 0 ${M_PI/2}" />
+    </xacro:table_macro>
+
+    <!--  Manipulator-->
+    <xacro:ur10e_robot prefix="" joint_limited="false"/>
+
+    <!--  Place robot on top of the table1-->
+    <joint name="tabletop_table1_to_ur10e" type="fixed">
+        <parent link="tabletop_table1" />
+        <child link = "base_link"/>
+        <origin xyz="0.0 0.0 0.001" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <xacro:sensor_astra prefix="hand_camera" parent="ee_link">
+        <origin xyz="-0.02 0.05 0.07" rpy="0 0.0 0" />
+    </xacro:sensor_astra>
+
+    <!--  <xacro:sensor_astra parent="base_link" prefix="camera">-->
+    <!--    &lt;!&ndash; NOTE: CHANGE THIS &ndash;&gt;-->
+    <!--    <origin xyz="-1 0 1" rpy="0 0 0"/>-->
+    <!--    &lt;!&ndash; <origin xyz="0.041311319304504816 -0.06402544453787727 0.044527571211305426" rpy="3.13766148064 -0.00787797070144 0.000110993634886"/> &ndash;&gt;-->
+    <!--  </xacro:sensor_astra>-->
+
+    <!-- Place tripod1 in the scene-->
+    <xacro:tripod_macro name="tripod1" parent="world">
+        <origin xyz="1 0 0" rpy="0 0 ${2/3*M_PI}" />
+    </xacro:tripod_macro>
+
+    <!-- Put 3d lidar in the scene-->
+    <xacro:VLP-16 name="lidar" parent="tripod1_left_support">
+        <origin xyz="0 0 0.001" rpy="0 0 0" />
+    </xacro:VLP-16>
+
+    <xacro:sensor_astra prefix="world_camera" parent="tripod1_right_support">
+        <origin xyz="0.02 0.07 0.015" rpy="0 0.0 0" />
+    </xacro:sensor_astra>
+
+</robot>

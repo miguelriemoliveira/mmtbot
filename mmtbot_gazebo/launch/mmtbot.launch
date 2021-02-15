@@ -12,6 +12,9 @@
 <!--    <arg name="debug" value="true"/>-->
   </include>
 
+  <!--  https://answers.ros.org/question/296720/delay-in-jointstates/-->
+  <param name="/use_sim_time" value="true"/>
+
   <!-- send robot urdf to param server -->
   <include file="$(find mmtbot_description)/launch/upload.launch">
     <arg name="limited" value="$(arg limited)"/>
