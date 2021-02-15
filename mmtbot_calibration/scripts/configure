@@ -1,0 +1,4 @@
+#!/bin/sh
+# Auto generated on 15/02/2021 08:31:40
+#      ATOMIC Framework
+rosrun atom_calibration configure_calibration_pkg -n mmtbot_calibration
