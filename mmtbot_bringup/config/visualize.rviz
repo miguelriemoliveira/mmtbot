@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /MotionPlanning1
         - /TF1/Frames1
       Splitter Ratio: 0.44192636013031006
     Tree Height: 346
@@ -81,6 +82,16 @@ Visualization Manager:
         Color Enabled: false
         Interrupt Display: false
         Links:
+          3dlidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          3dlidar_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           All Links Enabled: true
           Expand Joint Details: false
           Expand Link Details: false
@@ -136,12 +147,22 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          lidar:
+          leg1_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          lidar_base_link:
+          leg2_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg3_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg4_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -156,31 +177,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table1:
+          table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          table1_leg1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          tabletop_table1:
+          tabletop_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -189,21 +190,21 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          tripod1:
+          tripod:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          tripod1_left_support:
+          tripod_left_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          tripod1_plate:
+          tripod_plate:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          tripod1_right_support:
+          tripod_right_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -272,7 +273,7 @@ Visualization Manager:
         Colliding Link Color: 255; 0; 0
         Goal State Alpha: 1
         Goal State Color: 250; 128; 0
-        Interactive Marker Size: 0.15000000596046448
+        Interactive Marker Size: 0.25
         Joint Violation Color: 255; 0; 255
         Planning Group: manipulator
         Query Goal State: true
@@ -292,6 +293,16 @@ Visualization Manager:
       Scene Robot:
         Attached Body Color: 150; 50; 150
         Links:
+          3dlidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          3dlidar_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           All Links Enabled: true
           Expand Joint Details: false
           Expand Link Details: false
@@ -347,12 +358,22 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          lidar:
+          leg1_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          lidar_base_link:
+          leg2_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg3_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg4_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -367,31 +388,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table1:
+          table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          table1_leg1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          table1_leg4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          tabletop_table1:
+          tabletop_table:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -400,21 +401,21 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          tripod1:
+          tripod:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          tripod1_left_support:
+          tripod_left_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          tripod1_plate:
+          tripod_plate:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          tripod1_right_support:
+          tripod_right_support:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -658,9 +659,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8197963237762451
+      Pitch: 0.44979649782180786
       Target Frame: <Fixed Frame>
-      Yaw: 5.013608455657959
+      Yaw: 4.558610439300537
     Saved: ~
 Window Geometry:
   Displays:

@@ -85,7 +85,7 @@
     <joint name="${name}_to_${name}_plate" type="fixed">
         <parent link="${name}"/>
         <child link="${name}_plate" />
-        <origin xyz=".01 .03 1.32" rpy="0 ${M_PI/10} 0"/>
+        <origin xyz=".01 .03 1.33" rpy="0 ${M_PI/10} 0"/>
     </joint>
 
     <!-- Tripod left support-->
