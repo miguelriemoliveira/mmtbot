@@ -33,7 +33,7 @@
 description_file: "package://mmtbot_description/urdf/mmtbot.urdf.xacro"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
-bag_file: "$ROS_BAGS/mmtbot/15_02_2021.bag"
+bag_file: "$ROS_BAGS/mmtbot/16_02_2021.bag"
 
 # You must define a frame of reference for the optimization process.
 # It must exist in the transformation chains of all the sensors which are being calibrated.
@@ -71,11 +71,11 @@ sensors:
         child_link: "world_camera_link"
         topic_name: "/world_camera/rgb/image_raw"
 
-    lidar:
-        link: "lidar"
+    3dlidar:
+        link: "3dlidar"
         parent_link: "tripod_left_support"
-        child_link: "lidar_base_link"
-        topic_name: "/velodyne_points"
+        child_link: "3dlidar_base_link"
+        topic_name: "/3dlidar/points"
 
 # The calibration requires a detectable pattern.
 # This section describes the properties of the calibration pattern used in th calibration.

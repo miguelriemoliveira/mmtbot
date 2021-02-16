@@ -7,8 +7,8 @@
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>
-<!--    <arg name="paused" value="$(arg paused)"/>-->
-    <arg name="paused" value="true"/>
+    <arg name="paused" value="$(arg paused)"/>
+<!--    <arg name="paused" value="true"/>-->
     <arg name="gui" value="$(arg gui)"/>
 <!--    <arg name="debug" value="true"/>-->
   </include>
@@ -35,8 +35,8 @@
 
 <!--  , 4.3559242003650514e-09, -3.0820748745206933e-09, -1.1078814372989054, 4.737856279161653, -2.201401106333254, 0.07296412602779068, -1.6473584765568834-->
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description
-          -model robot -z 0" respawn="false" output="screen" />
-<!--          -J elbow_joint 0.3-->
+          -model robot -z 0 -J elbow_joint 0.3" respawn="false" output="screen"/>
+<!--          -->
 
   <include file="$(find ur_e_gazebo)/launch/controller_utils.launch"/>
 

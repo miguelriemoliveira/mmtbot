@@ -210,7 +210,7 @@
       <wall_time>1613322608 676756318</wall_time>
       <iterations>17784</iterations>
       <model name='charuco_800x600'>
-        <pose>0 1.47926 1.02366 1.54151 -0 0</pose>
+        <pose>0 1.47926 1.02366 1.34151 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='charuco'>
           <pose>0 1.47926 1.02366 1.54151 -0 0</pose>

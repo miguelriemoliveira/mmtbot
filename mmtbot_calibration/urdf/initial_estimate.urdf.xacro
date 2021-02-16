@@ -1,72 +1,936 @@
 <?xml version="1.0" ?>
-<robot name="mmtbot" xmlns:xacro="http://ros.org/wiki/xacro">
-    <!--  Miguel Riem Oliveira-->
-    <!--  February 2021-->
-
-    <!--Args are local, properties are global, so we copy the values of the arguments to the properties-->
-
-    <!--Properties are global so they can be viewed from inside the included xacros-->
-    <!--  args are used with $(arg arg_name), properties are used as ${property_name}-->
-    <xacro:property name="table1_height" value="0.795"/>
-    <xacro:property name="table1_width" value=".9"/>
-    <xacro:property name="table1_lenght" value="0.9"/>
-    <xacro:property name="table1_tabletop_thickness" value="0.015"/>
-    <xacro:property name="table1_leg_radius" value="0.02"/>
-    <xacro:property name="M_PI" value="3.1415926535897931" />
-
-    <!-- Include other files-->
-    <xacro:include filename="$(find mmtbot_description)/urdf/properties.xacro"/>
-    <xacro:include filename="$(find mmtbot_description)/urdf/table.macro.xacro"/>
-    <xacro:include filename="$(find mmtbot_description)/urdf/tripod.macro.xacro"/>
-<!--    <xacro:include filename="$(find hector_sensors_description)/urdf/asus_camera.urdf.xacro"/>-->
-<!--    <xacro:include filename="$(find hector_sensors_description)/urdf/vlp16.urdf.xacro"/>-->
-    <xacro:include filename="$(find ur_e_description)/urdf/astra.urdf.xacro" />
-    <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
-    <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
-    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-
-    <!-- Links and joints-->
-    <link name="world"/>
-
-    <!-- Place table 1 in the scene-->
-    <xacro:table_macro name="table1" parent="world" width="${table1_width}"
-                       lenght="${table1_lenght}" height="${table1_height}"
-                       tabletop_thickness="${table1_tabletop_thickness}" leg_radius="${table1_leg_radius}">
-        <origin xyz="-1 0 0" rpy="0 0 ${M_PI/2}" />
-    </xacro:table_macro>
-
-    <!--  Manipulator-->
-    <xacro:ur10e_robot prefix="" joint_limited="false"/>
-
-    <!--  Place robot on top of the table1-->
-    <joint name="tabletop_table1_to_ur10e" type="fixed">
-        <parent link="tabletop_table1" />
-        <child link = "base_link"/>
-        <origin xyz="0.0 0.0 0.001" rpy="0.0 0.0 0.0" />
+<robot name="mmtbot" version="1.0">
+  <material name="Yellow">
+    <color rgba="1.0 1.0 0.0 1.0"/>
+  </material>
+  <material name="Orange">
+    <color rgba="1.0 0.4 0.0 1.0"/>
+  </material>
+  <material name="grey">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="ros_control">
+    </plugin>
+  </gazebo>
+  <link name="world"/>
+  <link name="table"/>
+  <joint name="world_to_table" type="fixed">
+    <origin xyz="-1.0 0.0 0.0" rpy="0.0 0.0 1.5707963267948966"/>
+    <parent link="world"/>
+    <child link="table"/>
+  </joint>
+  <link name="tabletop_table">
+    <inertial>
+      <origin xyz="0.0 0.0 -0.015" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 -0.015" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.9 0.9 0.015"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 -0.015" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.9 0.9 0.015"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="tabletop_table">
+    <material>Gazebo/Grey</material>
+    <mu1>50.0</mu1>
+    <mu2>50.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <joint name="table_to_tabletop_table" type="fixed">
+    <origin xyz="0.0 0.0 0.795" rpy="0.0 0.0 0.0"/>
+    <parent link="table"/>
+    <child link="tabletop_table"/>
+  </joint>
+  <link name="leg1_table">
+    <inertial>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.78"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.3975" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.779"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="leg1_table">
+    <material>Gazebo/Grey</material>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <joint name="table_to_leg1" type="fixed">
+    <origin xyz="-0.43 0.43 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="table"/>
+    <child link="leg1_table"/>
+  </joint>
+  <link name="leg2_table">
+    <inertial>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.78"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.3975" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.779"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="leg2_table">
+    <material>Gazebo/Grey</material>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <joint name="table_to_leg2" type="fixed">
+    <origin xyz="0.43 0.43 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="table"/>
+    <child link="leg2_table"/>
+  </joint>
+  <link name="leg3_table">
+    <inertial>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.78"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.3975" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.779"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="leg3_table">
+    <material>Gazebo/Grey</material>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <joint name="table_to_leg3" type="fixed">
+    <origin xyz="0.43 -0.43 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="table"/>
+    <child link="leg3_table"/>
+  </joint>
+  <link name="leg4_table">
+    <inertial>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.3815" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.78"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.3975" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.779"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="leg4_table">
+    <material>Gazebo/Grey</material>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <joint name="table_to_leg4" type="fixed">
+    <origin xyz="-0.43 -0.43 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="table"/>
+    <child link="leg4_table"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="4.0"/>
+      <inertia ixx="0.0061063308908" ixy="0.0" ixz="0.0" iyy="0.0061063308908" iyz="0.0" izz="0.01125"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/base.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/base.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="shoulder_pan_joint" type="revolute">
+    <origin xyz="0.0 0.0 0.1807183549475882" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="base_link"/>
+    <child link="shoulder_link"/>
+    <limit effort="330.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="shoulder_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="7.369"/>
+      <inertia ixx="0.029819260655624295" ixy="0.0" ixz="0.0" iyy="0.029819260655624295" iyz="0.0" izz="0.020725312499999995"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/shoulder.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/shoulder.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="shoulder_lift_joint" type="revolute">
+    <origin xyz="0.0 0.176 0.0" rpy="0.0 1.5707963267948966 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="shoulder_link"/>
+    <child link="upper_arm_link"/>
+    <limit effort="330.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="upper_arm_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.306104723041748" rpy="0.0 0.0 0.0"/>
+      <mass value="13.051"/>
+      <inertia ixx="0.4259794731131226" ixy="0.0" ixz="0.0" iyy="0.4259794731131226" iyz="0.0" izz="0.036705937499999994"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/upperarm.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/upperarm.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="elbow_joint" type="revolute">
+    <origin xyz="0.0 -0.137 0.612209446083496" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="upper_arm_link"/>
+    <child link="forearm_link"/>
+    <limit effort="150.0" lower="-3.141592653589793" upper="3.141592653589793" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="forearm_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.28550853623327865" rpy="0.0 0.0 0.0"/>
+      <mass value="3.989"/>
+      <inertia ixx="0.11399742921147499" ixy="0.0" ixz="0.0" iyy="0.11399742921147499" iyz="0.0" izz="0.011219062499999998"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/forearm.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/forearm.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wrist_1_joint" type="revolute">
+    <origin xyz="0.0 0.0 0.5710170724665573" rpy="0.0 1.5707963267948966 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="forearm_link"/>
+    <child link="wrist_1_link"/>
+    <limit effort="54.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="6.28"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="wrist_1_link">
+    <inertial>
+      <origin xyz="0.0 0.1347892222434263 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="2.1"/>
+      <inertia ixx="0.00547312281075" ixy="0.0" ixz="0.0" iyy="0.00547312281075" iyz="0.0" izz="0.00590625"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/wrist1.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/wrist1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wrist_2_joint" type="revolute">
+    <origin xyz="0.0 0.1347892222434263 0.0" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="wrist_1_link"/>
+    <child link="wrist_2_link"/>
+    <limit effort="54.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="6.28"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="wrist_2_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.1198680944284703" rpy="0.0 0.0 0.0"/>
+      <mass value="1.98"/>
+      <inertia ixx="0.005160372935849999" ixy="0.0" ixz="0.0" iyy="0.005160372935849999" iyz="0.0" izz="0.00556875"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/wrist2.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/wrist2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wrist_3_joint" type="revolute">
+    <origin xyz="0.0 0.0 0.1198680944284703" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="wrist_2_link"/>
+    <child link="wrist_3_link"/>
+    <limit effort="54.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="6.28"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="wrist_3_link">
+    <inertial>
+      <origin xyz="0.0 0.0906473542891715 0.0" rpy="1.5707963267948966 0.0 0.0"/>
+      <mass value="0.615"/>
+      <inertia ixx="0.0004394685742125001" ixy="0.0" ixz="0.0" iyy="0.0004394685742125001" iyz="0.0" izz="0.0006226875"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/wrist3.dae"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/collision/wrist3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="ee_fixed_joint" type="fixed">
+    <origin xyz="0.0 0.1156473542891715 0.0" rpy="0.0 0.0 1.5707963267948966"/>
+    <parent link="wrist_3_link"/>
+    <child link="ee_link"/>
+  </joint>
+  <link name="ee_link">
+    <collision>
+      <origin xyz="-0.01 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="gripper_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="1.7"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.071 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/weiss-mount.dae"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.07 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/ur10e/visual/weiss-cg.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0355 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.071 0.105 0.06"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="gripper_fixed_joint" type="fixed">
+    <origin xyz="0.071 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="ee_link"/>
+    <child link="gripper_link"/>
+  </joint>
+  <joint name="left_finger_joint" type="prismatic">
+    <origin xyz="0.0 0.02 0.0" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <parent link="gripper_link"/>
+    <child link="left_finger_link"/>
+    <limit effort="100.0" lower="0.0" upper="0.03078" velocity="0.05"/>
+  </joint>
+  <link name="left_finger_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="0.1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0475 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.095 0.02 0.02"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0475 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.095 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_finger_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="0.1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0475 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.095 0.02 0.02"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0475 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.095 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_finger_joint" type="prismatic">
+    <origin xyz="0.0 -0.02 0.0" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <parent link="gripper_link"/>
+    <child link="right_finger_link"/>
+    <limit effort="100.0" lower="0.0" upper="0.03078" velocity="0.05"/>
+  </joint>
+  <transmission name="shoulder_pan_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_pan_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
-
-    <xacro:sensor_astra prefix="hand_camera" parent="ee_link">
-        <origin xyz="-0.02 0.05 0.07" rpy="0 0.0 0" />
-    </xacro:sensor_astra>
-
-    <!--  <xacro:sensor_astra parent="base_link" prefix="camera">-->
-    <!--    &lt;!&ndash; NOTE: CHANGE THIS &ndash;&gt;-->
-    <!--    <origin xyz="-1 0 1" rpy="0 0 0"/>-->
-    <!--    &lt;!&ndash; <origin xyz="0.041311319304504816 -0.06402544453787727 0.044527571211305426" rpy="3.13766148064 -0.00787797070144 0.000110993634886"/> &ndash;&gt;-->
-    <!--  </xacro:sensor_astra>-->
-
-    <!-- Place tripod1 in the scene-->
-    <xacro:tripod_macro name="tripod1" parent="world">
-        <origin xyz="1 0 0" rpy="0 0 ${2/3*M_PI}" />
-    </xacro:tripod_macro>
-
-    <!-- Put 3d lidar in the scene-->
-    <xacro:VLP-16 name="lidar" parent="tripod1_left_support">
-        <origin xyz="0 0 0.001" rpy="0 0 0" />
-    </xacro:VLP-16>
-
-    <xacro:sensor_astra prefix="world_camera" parent="tripod1_right_support">
-        <origin xyz="0.02 0.07 0.015" rpy="0 0.0 0" />
-    </xacro:sensor_astra>
-
+    <actuator name="shoulder_pan_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="shoulder_lift_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_lift_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_lift_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="elbow_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="elbow_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="wrist_1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_1_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wrist_1_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="wrist_2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wrist_2_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="wrist_3_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_3_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wrist_3_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="left_finger_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_finger_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_finger_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="right_finger_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_finger_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_finger_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="shoulder_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="upper_arm_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="forearm_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="wrist_1_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="wrist_3_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="wrist_2_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="ee_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="gripper_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_finger_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_finger_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <link name="base"/>
+  <joint name="base_link-base_fixed_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -3.141592653589793"/>
+    <parent link="base_link"/>
+    <child link="base"/>
+  </joint>
+  <link name="tool0"/>
+  <joint name="wrist_3_link-tool0_fixed_joint" type="fixed">
+    <origin xyz="0.0 0.1156473542891715 0.0" rpy="-1.5707963267948966 0.0 0.0"/>
+    <parent link="wrist_3_link"/>
+    <child link="tool0"/>
+  </joint>
+  <joint name="tabletop_table_to_ur10e" type="fixed">
+    <origin xyz="0.0 0.0 0.001" rpy="0.0 0.0 0.0"/>
+    <parent link="tabletop_table"/>
+    <child link="base_link"/>
+  </joint>
+  <joint name="hand_camera_joint" type="fixed">
+    <origin xyz="0.018991265445947647 0.05000000074505806 0.1735166609287262" rpy="3.144852959884781e-09 -5.9961499533694915e-09 -0.04271597210344425"/>
+    <parent link="ee_link"/>
+    <child link="hand_camera_link"/>
+  </joint>
+  <link name="hand_camera_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.564"/>
+      <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.00049894" iyz="0.0" izz="0.003879257"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.03 -0.06 0.0" rpy="3.141592653589793 0.0 1.5707963267948966"/>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/sensors/astra2.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.01 -0.06 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.165 0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hand_camera_rgb_joint" type="fixed">
+    <origin xyz="0.0 -0.045 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="hand_camera_link"/>
+    <child link="hand_camera_rgb_frame"/>
+  </joint>
+  <link name="hand_camera_rgb_frame"/>
+  <joint name="hand_camera_rgb_optical_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+    <parent link="hand_camera_rgb_frame"/>
+    <child link="hand_camera_rgb_optical_frame"/>
+  </joint>
+  <link name="hand_camera_rgb_optical_frame"/>
+  <joint name="hand_camera_depth_joint" type="fixed">
+    <origin xyz="0.0 -0.02 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="hand_camera_link"/>
+    <child link="hand_camera_depth_frame"/>
+  </joint>
+  <link name="hand_camera_depth_frame"/>
+  <joint name="hand_camera_depth_optical_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+    <parent link="hand_camera_depth_frame"/>
+    <child link="hand_camera_depth_optical_frame"/>
+  </joint>
+  <link name="hand_camera_depth_optical_frame"/>
+  <gazebo reference="hand_camera_depth_frame">
+    <sensor name="camera" type="depth">
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
+      <camera>
+        <horizontal_fov>1.0471975511965976</horizontal_fov>
+        <image>
+          <format>B8G8R8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.10</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="hand_camera_camera_controller">
+        <cameraName>hand_camera</cameraName>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <pointCloudTopicName>depth/points</pointCloudTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+        <frameName>hand_camera_depth_optical_frame</frameName>
+        <baseline>0.1</baseline>
+        <distortion_k1>0.0</distortion_k1>
+        <distortion_k2>0.0</distortion_k2>
+        <distortion_k3>0.0</distortion_k3>
+        <distortion_t1>0.0</distortion_t1>
+        <distortion_t2>0.0</distortion_t2>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <link name="tripod">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://mmtbot_description/meshes/tripod/tripod.dae" scale="0.04 0.04 0.04"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://mmtbot_description/meshes/tripod/tripod.dae" scale="0.04 0.04 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="tripod">
+    <material>Gazebo/Grey</material>
+    <mu1>50.0</mu1>
+    <mu2>50.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <joint name="world_to_tripod" type="fixed">
+    <origin xyz="1.0 0.0 0.0" rpy="0.0 0.0 2.0943951023931953"/>
+    <parent link="world"/>
+    <child link="tripod"/>
+  </joint>
+  <gazebo reference="tripod">
+    <material>Gazebo/Grey</material>
+    <mu1>50.0</mu1>
+    <mu2>50.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <link name="tripod_plate">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <mass value="1.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.4 0.015"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.15 0.015"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="tripod">
+    <material>Gazebo/Grey</material>
+    <mu1>50.0</mu1>
+    <mu2>50.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <joint name="tripod_to_tripod_plate" type="fixed">
+    <origin xyz="0.01 0.03 1.33" rpy="0.0 0.3141592653589793 0.0"/>
+    <parent link="tripod"/>
+    <child link="tripod_plate"/>
+  </joint>
+  <link name="tripod_left_support"/>
+  <joint name="tripod_plate_to_tripod_left_support" type="fixed">
+    <origin xyz="0.0 0.18 0.0075" rpy="0.0 0.0 0.0"/>
+    <parent link="tripod_plate"/>
+    <child link="tripod_left_support"/>
+  </joint>
+  <link name="tripod_right_support"/>
+  <joint name="tripod_plate_to_tripod_right_support" type="fixed">
+    <origin xyz="0.0 -0.18 0.0075" rpy="0.0 0.0 0.0"/>
+    <parent link="tripod_plate"/>
+    <child link="tripod_right_support"/>
+  </joint>
+  <joint name="3dlidar_base_mount_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.02597375027835369" rpy="-0.07126523270675034 0.052737964536965824 3.515990808761643e-10"/>
+    <parent link="tripod_left_support"/>
+    <child link="3dlidar_base_link"/>
+  </joint>
+  <link name="3dlidar_base_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.03585" rpy="0 0 0"/>
+      <mass value="0.83"/>
+      <inertia ixx="0.000908059425" ixy="0.0" ixz="0.0" iyy="0.000908059425" iyz="0.0" izz="0.0011049624"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://velodyne_description/meshes/VLP16_base_1.dae"/>
+      </geometry>
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="package://velodyne_description/meshes/VLP16_base_2.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.03585" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.0516" length="0.0717"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="3dlidar_base_scan_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0377" rpy="0.0 0.0 0.0"/>
+    <parent link="3dlidar_base_link"/>
+    <child link="3dlidar"/>
+  </joint>
+  <link name="3dlidar">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="1e-07" ixy="0.0" ixz="0.0" iyy="1e-07" iyz="0.0" izz="1e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 -0.0377" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <gazebo reference="3dlidar">
+    <sensor name="3dlidar-VLP16" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>1875</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.141592653589793</min_angle>
+            <max_angle>3.141592653589793</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.2617993877991494</min_angle>
+            <max_angle> 0.2617993877991494</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.3</min>
+          <max>131.0</max>
+          <resolution>0.001</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.0</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_velodyne_laser.so" name="gazebo_ros_laser_controller">
+        <topicName>/3dlidar/points</topicName>
+        <frameName>3dlidar</frameName>
+        <min_range>0.9</min_range>
+        <max_range>130.0</max_range>
+        <gaussianNoise>0.008</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <joint name="world_camera_joint" type="fixed">
+    <origin xyz="0.14269079267978668 0.07000000029802322 0.014999999664723873" rpy="-0.05341165465782839 0.15807438342984706 0.17386070330634576"/>
+    <parent link="tripod_right_support"/>
+    <child link="world_camera_link"/>
+  </joint>
+  <link name="world_camera_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.564"/>
+      <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.00049894" iyz="0.0" izz="0.003879257"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.03 -0.06 0.0" rpy="3.141592653589793 0.0 1.5707963267948966"/>
+      <geometry>
+        <mesh filename="package://ur_e_description/meshes/sensors/astra2.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.01 -0.06 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.04 0.165 0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="world_camera_rgb_joint" type="fixed">
+    <origin xyz="0.0 -0.045 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="world_camera_link"/>
+    <child link="world_camera_rgb_frame"/>
+  </joint>
+  <link name="world_camera_rgb_frame"/>
+  <joint name="world_camera_rgb_optical_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+    <parent link="world_camera_rgb_frame"/>
+    <child link="world_camera_rgb_optical_frame"/>
+  </joint>
+  <link name="world_camera_rgb_optical_frame"/>
+  <joint name="world_camera_depth_joint" type="fixed">
+    <origin xyz="0.0 -0.02 0.0" rpy="0.0 0.0 0.0"/>
+    <parent link="world_camera_link"/>
+    <child link="world_camera_depth_frame"/>
+  </joint>
+  <link name="world_camera_depth_frame"/>
+  <joint name="world_camera_depth_optical_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5707963267948966 0.0 -1.5707963267948966"/>
+    <parent link="world_camera_depth_frame"/>
+    <child link="world_camera_depth_optical_frame"/>
+  </joint>
+  <link name="world_camera_depth_optical_frame"/>
+  <gazebo reference="world_camera_depth_frame">
+    <sensor name="camera" type="depth">
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
+      <camera>
+        <horizontal_fov>1.0471975511965976</horizontal_fov>
+        <image>
+          <format>B8G8R8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.10</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="world_camera_camera_controller">
+        <cameraName>world_camera</cameraName>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <pointCloudTopicName>depth/points</pointCloudTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+        <frameName>world_camera_depth_optical_frame</frameName>
+        <baseline>0.1</baseline>
+        <distortion_k1>0.0</distortion_k1>
+        <distortion_k2>0.0</distortion_k2>
+        <distortion_k3>0.0</distortion_k3>
+        <distortion_t1>0.0</distortion_t1>
+        <distortion_t2>0.0</distortion_t2>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
+      </plugin>
+    </sensor>
+  </gazebo>
 </robot>

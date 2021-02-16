@@ -113,7 +113,7 @@ Visualization Manager:
   - Class: rviz/MarkerArray
     Enabled: true
     Marker Topic: calibrate/labeled_data
-    Name: lidar-LabeledData
+    Name: 3dlidar-LabeledData
     Namespaces: {}
     Queue Size: 10
     Value: true

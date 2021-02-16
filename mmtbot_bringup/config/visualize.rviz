@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /MotionPlanning1
         - /TF1/Frames1
       Splitter Ratio: 0.44192636013031006
     Tree Height: 346
@@ -551,7 +550,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.019999999552965164
       Style: Spheres
-      Topic: /velodyne_points
+      Topic: /3dlidar/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -659,9 +658,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.44979649782180786
+      Pitch: 0.5697963833808899
       Target Frame: <Fixed Frame>
-      Yaw: 4.558610439300537
+      Yaw: 0.22542795538902283
     Saved: ~
 Window Geometry:
   Displays:
