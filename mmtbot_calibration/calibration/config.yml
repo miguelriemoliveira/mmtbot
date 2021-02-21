@@ -103,6 +103,7 @@ calibration_pattern:
     # If the pattern type is "charuco" you need to define
     # the aruco dictionary used by the pattern.
     # See https://docs.opencv.org/trunk/dc/df7/dictionary_8hpp.html
+#    dictionary: "DICT_5X5"
     dictionary: "DICT_5X5_100"
 
     # Mesh file (collada.dae or stl) for showing pattern on rviz. URI or regular path.
@@ -131,7 +132,7 @@ calibration_pattern:
 
 # If your calibration problem is not fully constrained you should anchored one of the sensors.
 # This makes it immovable during the optimization.
-# This is tyically referred to as gauge freedom.
+# This is typically referred to as gauge freedom.
 anchored_sensor: "world_camera"
 
 # Max time delta (in milliseconds) between sensor data messages when creating a collection.

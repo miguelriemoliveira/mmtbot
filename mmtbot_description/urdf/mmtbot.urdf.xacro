@@ -18,7 +18,7 @@
     <xacro:include filename="$(find mmtbot_description)/urdf/properties.xacro"/>
     <xacro:include filename="$(find mmtbot_description)/urdf/table.macro.xacro"/>
     <xacro:include filename="$(find mmtbot_description)/urdf/tripod.macro.xacro"/>
-    <xacro:include filename="$(find ur_e_description)/urdf/astra.urdf.xacro" />
+    <xacro:include filename="$(find mmtbot_description)/urdf/astra.urdf.xacro" />
     <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
     <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
