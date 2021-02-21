@@ -7,8 +7,8 @@
         <!-- http://wiki.ros.org/openni_launch/Tutorials/BagRecordingPlayback-->
         <node name="rosbag_record" pkg="rosbag" type="record" output="screen" args="
         /tf
-        /joint_states
         /tf_static
+        /joint_states
         /world_camera/rgb/image_raw/compressed
         /world_camera/rgb/camera_info
         /hand_camera/rgb/image_raw/compressed
