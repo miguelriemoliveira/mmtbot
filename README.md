@@ -4,9 +4,8 @@ Multi-modal test bot
 
 # Installation
 
-https://github.com/iris-ua/iris_ur10e
-
-https://github.com/iris-ua/iris_ur10e_calibration
+https://github.com/iris-ua/iris_ur10e/tree/noetic-devel
+https://github.com/iris-ua/iris_ur10e_calibration/tree/noetic-devel
 
 # Running the simulation to collect a bag file:
 
