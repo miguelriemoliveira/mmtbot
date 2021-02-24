@@ -1,6 +1,14 @@
 # mmtbot
 
-Multi-modal test bot
+**M**ulti-**M**odal **T**est **B**ot (mmtbot) is a conceptual robot designed to test advanced calibration methodologies. The system contains the following sensors:
+
+- **3dlidar** - A 3D LiDAR mounted on a tripod
+- **world_camera** - An RGB-D camera mounted on the same tripod
+- **hand_camera** - A second RGB-D camera mounted on the manipulator's end effector link
+
+![mmtbot_gazebo](docs/gazebo.png)
+
+![mmtbot_gazebo](docs/rviz.png)
 
 # Installation
 
