@@ -12,9 +12,21 @@
 
 # Installation
 
-https://github.com/iris-ua/iris_ur10e/tree/noetic-devel
+##### Clone dependencies:
+```
+cd <path_to_catkin_ws>/src
+git clone https://github.com/iris-ua/iris_ur10e -b noetic-devel
+git clone https://github.com/iris-ua/iris_ur10e_calibration -b noetic-devel
+git clone https://bitbucket.org/DataspeedInc/velodyne_simulator -b master
+```
 
-https://github.com/iris-ua/iris_ur10e_calibration/tree/noetic-devel
+##### Install packages:
+```
+sudo apt install ros-<version>-moveit*
+sudo apt install ros-<version>-warehouse-ros*
+sudo apt install ros-<version>-joint-trajectory-controller
+sudo apt install libignition-common3 libignition-common3-graphics
+```
 
 # Running the simulation to collect a bag file:
 
