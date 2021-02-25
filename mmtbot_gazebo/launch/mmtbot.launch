@@ -48,7 +48,7 @@
   <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller"/>
 
   <!-- start a fake weiss gripper -->
-  <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>
+<!--  <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>-->
 
   <!-- Start interactive positioning of pattern -->
   <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>
