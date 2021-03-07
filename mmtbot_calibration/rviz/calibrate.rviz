@@ -5,9 +5,13 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Miscellaneous-MarkerArray1
+        - /RobotMeshes-MarkerArray1
+        - /RobotMeshes-MarkerArray1/Status1
+        - /Patterns-MarkerArray1
+        - /Patterns-MarkerArray1/Namespaces1
+        - /3dlidar-LabeledData1/Namespaces1
       Splitter Ratio: 0.763005793094635
-    Tree Height: 369
+    Tree Height: 408
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -26,7 +30,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: hand_camera-Labels-Image
+    SyncSource: world_camera-Labels-Image
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -53,258 +57,10 @@ Visualization Manager:
       Reference Frame: world
       Value: false
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        c0_3dlidar:
-          Value: true
-        c0_3dlidar_base_link:
-          Value: true
-        c0_base:
-          Value: true
-        c0_base_link:
-          Value: true
-        c0_ee_link:
-          Value: true
-        c0_forearm_link:
-          Value: true
-        c0_front_left_wheel_link:
-          Value: true
-        c0_front_right_wheel_link:
-          Value: true
-        c0_gripper_link:
-          Value: true
-        c0_hand_camera_depth_frame:
-          Value: true
-        c0_hand_camera_depth_optical_frame:
-          Value: true
-        c0_hand_camera_link:
-          Value: true
-        c0_hand_camera_rgb_frame:
-          Value: true
-        c0_hand_camera_rgb_optical_frame:
-          Value: true
-        c0_left_finger_link:
-          Value: true
-        c0_leg1_table:
-          Value: true
-        c0_leg2_table:
-          Value: true
-        c0_leg3_table:
-          Value: true
-        c0_leg4_table:
-          Value: true
-        c0_pattern_link:
-          Value: true
-        c0_rear_left_wheel_link:
-          Value: true
-        c0_rear_right_wheel_link:
-          Value: true
-        c0_right_finger_link:
-          Value: true
-        c0_shoulder_link:
-          Value: true
-        c0_table:
-          Value: true
-        c0_tabletop_table:
-          Value: true
-        c0_tool0:
-          Value: true
-        c0_tripod:
-          Value: true
-        c0_tripod_left_support:
-          Value: true
-        c0_tripod_plate:
-          Value: true
-        c0_tripod_right_support:
-          Value: true
-        c0_upper_arm_link:
-          Value: true
-        c0_world:
-          Value: true
-        c0_world_camera_depth_frame:
-          Value: true
-        c0_world_camera_depth_optical_frame:
-          Value: true
-        c0_world_camera_link:
-          Value: true
-        c0_world_camera_rgb_frame:
-          Value: true
-        c0_world_camera_rgb_optical_frame:
-          Value: true
-        c0_wrist_1_link:
-          Value: true
-        c0_wrist_2_link:
-          Value: true
-        c0_wrist_3_link:
-          Value: true
-        c1_3dlidar:
-          Value: true
-        c1_3dlidar_base_link:
-          Value: true
-        c1_base:
-          Value: true
-        c1_base_link:
-          Value: true
-        c1_ee_link:
-          Value: true
-        c1_forearm_link:
-          Value: true
-        c1_front_left_wheel_link:
-          Value: true
-        c1_front_right_wheel_link:
-          Value: true
-        c1_gripper_link:
-          Value: true
-        c1_hand_camera_depth_frame:
-          Value: true
-        c1_hand_camera_depth_optical_frame:
-          Value: true
-        c1_hand_camera_link:
-          Value: true
-        c1_hand_camera_rgb_frame:
-          Value: true
-        c1_hand_camera_rgb_optical_frame:
-          Value: true
-        c1_left_finger_link:
-          Value: true
-        c1_leg1_table:
-          Value: true
-        c1_leg2_table:
-          Value: true
-        c1_leg3_table:
-          Value: true
-        c1_leg4_table:
-          Value: true
-        c1_pattern_link:
-          Value: true
-        c1_rear_left_wheel_link:
-          Value: true
-        c1_rear_right_wheel_link:
-          Value: true
-        c1_right_finger_link:
-          Value: true
-        c1_shoulder_link:
-          Value: true
-        c1_table:
-          Value: true
-        c1_tabletop_table:
-          Value: true
-        c1_tool0:
-          Value: true
-        c1_tripod:
-          Value: true
-        c1_tripod_left_support:
-          Value: true
-        c1_tripod_plate:
-          Value: true
-        c1_tripod_right_support:
-          Value: true
-        c1_upper_arm_link:
-          Value: true
-        c1_world:
-          Value: true
-        c1_world_camera_depth_frame:
-          Value: true
-        c1_world_camera_depth_optical_frame:
-          Value: true
-        c1_world_camera_link:
-          Value: true
-        c1_world_camera_rgb_frame:
-          Value: true
-        c1_world_camera_rgb_optical_frame:
-          Value: true
-        c1_wrist_1_link:
-          Value: true
-        c1_wrist_2_link:
-          Value: true
-        c1_wrist_3_link:
-          Value: true
-        c2_3dlidar:
-          Value: true
-        c2_3dlidar_base_link:
-          Value: true
-        c2_base:
-          Value: true
-        c2_base_link:
-          Value: true
-        c2_ee_link:
-          Value: true
-        c2_forearm_link:
-          Value: true
-        c2_front_left_wheel_link:
-          Value: true
-        c2_front_right_wheel_link:
-          Value: true
-        c2_gripper_link:
-          Value: true
-        c2_hand_camera_depth_frame:
-          Value: true
-        c2_hand_camera_depth_optical_frame:
-          Value: true
-        c2_hand_camera_link:
-          Value: true
-        c2_hand_camera_rgb_frame:
-          Value: true
-        c2_hand_camera_rgb_optical_frame:
-          Value: true
-        c2_left_finger_link:
-          Value: true
-        c2_leg1_table:
-          Value: true
-        c2_leg2_table:
-          Value: true
-        c2_leg3_table:
-          Value: true
-        c2_leg4_table:
-          Value: true
-        c2_pattern_link:
-          Value: true
-        c2_rear_left_wheel_link:
-          Value: true
-        c2_rear_right_wheel_link:
-          Value: true
-        c2_right_finger_link:
-          Value: true
-        c2_shoulder_link:
-          Value: true
-        c2_table:
-          Value: true
-        c2_tabletop_table:
-          Value: true
-        c2_tool0:
-          Value: true
-        c2_tripod:
-          Value: true
-        c2_tripod_left_support:
-          Value: true
-        c2_tripod_plate:
-          Value: true
-        c2_tripod_right_support:
-          Value: true
-        c2_upper_arm_link:
-          Value: true
-        c2_world:
-          Value: true
-        c2_world_camera_depth_frame:
-          Value: true
-        c2_world_camera_depth_optical_frame:
-          Value: true
-        c2_world_camera_link:
-          Value: true
-        c2_world_camera_rgb_frame:
-          Value: true
-        c2_world_camera_rgb_optical_frame:
-          Value: true
-        c2_wrist_1_link:
-          Value: true
-        c2_wrist_2_link:
-          Value: true
-        c2_wrist_3_link:
-          Value: true
-        world:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -312,194 +68,15 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          c0_world:
-            c0_pattern_link:
-              {}
-            c0_table:
-              c0_leg1_table:
-                {}
-              c0_leg2_table:
-                {}
-              c0_leg3_table:
-                {}
-              c0_leg4_table:
-                {}
-              c0_tabletop_table:
-                c0_base_link:
-                  c0_base:
-                    {}
-                  c0_front_left_wheel_link:
-                    {}
-                  c0_front_right_wheel_link:
-                    {}
-                  c0_rear_left_wheel_link:
-                    {}
-                  c0_rear_right_wheel_link:
-                    {}
-                  c0_shoulder_link:
-                    c0_upper_arm_link:
-                      c0_forearm_link:
-                        c0_wrist_1_link:
-                          c0_wrist_2_link:
-                            c0_wrist_3_link:
-                              c0_ee_link:
-                                c0_gripper_link:
-                                  c0_left_finger_link:
-                                    {}
-                                  c0_right_finger_link:
-                                    {}
-                                c0_hand_camera_link:
-                                  c0_hand_camera_depth_frame:
-                                    c0_hand_camera_depth_optical_frame:
-                                      {}
-                                  c0_hand_camera_rgb_frame:
-                                    c0_hand_camera_rgb_optical_frame:
-                                      {}
-                              c0_tool0:
-                                {}
-            c0_tripod:
-              c0_tripod_plate:
-                c0_tripod_left_support:
-                  c0_3dlidar_base_link:
-                    c0_3dlidar:
-                      {}
-                c0_tripod_right_support:
-                  c0_world_camera_link:
-                    c0_world_camera_depth_frame:
-                      c0_world_camera_depth_optical_frame:
-                        {}
-                    c0_world_camera_rgb_frame:
-                      c0_world_camera_rgb_optical_frame:
-                        {}
-          c1_world:
-            c1_pattern_link:
-              {}
-            c1_table:
-              c1_leg1_table:
-                {}
-              c1_leg2_table:
-                {}
-              c1_leg3_table:
-                {}
-              c1_leg4_table:
-                {}
-              c1_tabletop_table:
-                c1_base_link:
-                  c1_base:
-                    {}
-                  c1_front_left_wheel_link:
-                    {}
-                  c1_front_right_wheel_link:
-                    {}
-                  c1_rear_left_wheel_link:
-                    {}
-                  c1_rear_right_wheel_link:
-                    {}
-                  c1_shoulder_link:
-                    c1_upper_arm_link:
-                      c1_forearm_link:
-                        c1_wrist_1_link:
-                          c1_wrist_2_link:
-                            c1_wrist_3_link:
-                              c1_ee_link:
-                                c1_gripper_link:
-                                  c1_left_finger_link:
-                                    {}
-                                  c1_right_finger_link:
-                                    {}
-                                c1_hand_camera_link:
-                                  c1_hand_camera_depth_frame:
-                                    c1_hand_camera_depth_optical_frame:
-                                      {}
-                                  c1_hand_camera_rgb_frame:
-                                    c1_hand_camera_rgb_optical_frame:
-                                      {}
-                              c1_tool0:
-                                {}
-            c1_tripod:
-              c1_tripod_plate:
-                c1_tripod_left_support:
-                  c1_3dlidar_base_link:
-                    c1_3dlidar:
-                      {}
-                c1_tripod_right_support:
-                  c1_world_camera_link:
-                    c1_world_camera_depth_frame:
-                      c1_world_camera_depth_optical_frame:
-                        {}
-                    c1_world_camera_rgb_frame:
-                      c1_world_camera_rgb_optical_frame:
-                        {}
-          c2_world:
-            c2_pattern_link:
-              {}
-            c2_table:
-              c2_leg1_table:
-                {}
-              c2_leg2_table:
-                {}
-              c2_leg3_table:
-                {}
-              c2_leg4_table:
-                {}
-              c2_tabletop_table:
-                c2_base_link:
-                  c2_base:
-                    {}
-                  c2_front_left_wheel_link:
-                    {}
-                  c2_front_right_wheel_link:
-                    {}
-                  c2_rear_left_wheel_link:
-                    {}
-                  c2_rear_right_wheel_link:
-                    {}
-                  c2_shoulder_link:
-                    c2_upper_arm_link:
-                      c2_forearm_link:
-                        c2_wrist_1_link:
-                          c2_wrist_2_link:
-                            c2_wrist_3_link:
-                              c2_ee_link:
-                                c2_gripper_link:
-                                  c2_left_finger_link:
-                                    {}
-                                  c2_right_finger_link:
-                                    {}
-                                c2_hand_camera_link:
-                                  c2_hand_camera_depth_frame:
-                                    c2_hand_camera_depth_optical_frame:
-                                      {}
-                                  c2_hand_camera_rgb_frame:
-                                    c2_hand_camera_rgb_optical_frame:
-                                      {}
-                              c2_tool0:
-                                {}
-            c2_tripod:
-              c2_tripod_plate:
-                c2_tripod_left_support:
-                  c2_3dlidar_base_link:
-                    c2_3dlidar:
-                      {}
-                c2_tripod_right_support:
-                  c2_world_camera_link:
-                    c2_world_camera_depth_frame:
-                      c2_world_camera_depth_optical_frame:
-                        {}
-                    c2_world_camera_rgb_frame:
-                      c2_world_camera_rgb_optical_frame:
-                        {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: calibrate/robot_meshes
       Name: RobotMeshes-MarkerArray
       Namespaces:
         0: true
-        1: true
-        2: true
       Queue Size: 10
       Value: true
     - Class: rviz/MarkerArray
@@ -511,14 +88,6 @@ Visualization Manager:
         0-frame_sampled: true
         0-mesh: true
         0-transitions: true
-        1-corners: true
-        1-frame_sampled: true
-        1-mesh: true
-        1-transitions: true
-        2-corners: true
-        2-frame_sampled: true
-        2-mesh: true
-        2-transitions: true
       Queue Size: 10
       Value: true
     - Class: rviz/MarkerArray
@@ -554,16 +123,13 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: calibrate/labeled_data
       Name: 3dlidar-LabeledData
       Namespaces:
-        1-3dlidar: true
-        1-3dlidar-limit_points: true
-        2-3dlidar: true
-        2-3dlidar-limit_points: true
+        {}
       Queue Size: 10
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -593,7 +159,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.9196763038635254
+      Distance: 3.462656021118164
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -601,17 +167,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.3314114809036255
-        Y: 0.6464090347290039
-        Z: 9.527429938316345e-07
+        X: 0.5226277112960815
+        Y: 0.5134246349334717
+        Z: 5.951151251792908e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6747968196868896
+      Pitch: 0.25479772686958313
       Target Frame: <Fixed Frame>
-      Yaw: 4.517156600952148
+      Yaw: 5.147126197814941
     Saved:
       - Class: rviz/Orbit
         Distance: 4.057810306549072
@@ -639,7 +205,7 @@ Window Geometry:
   Height: 845
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000002effc020000000dfb0000001200530065006c0065006300740069006f006e000000003d0000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f000001b1000000cc00fffffffb0000000a00560069006500770073000000018b00000102000000a900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001a00460072006f006e00740061006c00430061006d006500720061000000012e000001170000000000000000fb000000300062006100730065005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006500000001da000000b30000000000000000fb000000320077006f0072006c0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006501000001f6000000ae0000001700fffffffb0000003000680061006e0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006501000002aa000000840000001700ffffff000000010000011c0000024cfc0200000015fb000000220062006100730065005f00630061006d006500720061002d0049006d00610067006500000000410000024c0000000000000000fb0000001c00460072006f006e00740061006c002d00430061006d006500720061000000003d000001260000000000000000fb0000001e0054006f007000520069006700680074002d00430061006d00650072006100000000410000003a0000000000000000fb0000001c0054006f0070004c006500660074002d00430061006d0065007200610000000041000003840000000000000000fb0000000c00430061006d00650072006100000000410000024c0000000000000000fb0000000c00430061006d006500720061010000003d000003420000000000000000fb0000002a0054006f0070005200690067006800740049006d006100670065002d004c006100620065006c0065006400000000410000024c0000000000000000fb0000000c00430061006d00650072006101000000410000024c0000000000000000fb000000280054006f0070004c0065006600740049006d006100670065002d004c006100620065006c006500640000000177000001160000000000000000fb000000340054006f00700043005200470042004400430061006d002d0049006d006100670065002d004c006100620065006c006c006500640000000120000002a50000000000000000fb0000003a0054006f00700043005200470042004400430061006d006500720061002d0049006d006100670065002d004c006100620065006c006c0065006401000001630000012a0000000000000000fb000000280054006f00700043005200470042004400430061006d006500720061002d0049006d00610067006500000001da000000b30000000000000000fb0000001a0054006f0070004c006500660074002d0049006d00610067006501000000410000024c0000000000000000fb0000001c0054006f007000520069006700680074002d0049006d0061006700650100000169000001240000000000000000fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001e004c00650066007400530074006500720065006f0049006d006100670065000000003d000001340000000000000000fb000000200052006900670068007400530074006500720065006f0049006d0061006700650000000122000000dd0000000000000000fb0000001600460072006f006e007400430061006d006500720061000000003d0000008b0000000000000000fb0000002a0052006900670068007400530074006500720065006f005700690064006500430061006d00650072006100000000ce0000008a0000000000000000fb00000026004c00650066007400530074006500720065006f00570069006400650049006d006100670065000000003d0000019d0000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d0065000000000000000780000002df00fffffffb0000000800540069006d00650100000000000004500000000000000000000004d0000002ef00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a000002effc020000000dfb0000001200530065006c0065006300740069006f006e000000003d0000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f000001d8000000cc00fffffffb0000000a00560069006500770073000000018b00000102000000a900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001a00460072006f006e00740061006c00430061006d006500720061000000012e000001170000000000000000fb000000300062006100730065005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006500000001da000000b30000000000000000fb000000320077006f0072006c0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d006100670065010000021d000000870000001700fffffffb0000003000680061006e0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006501000002aa000000840000001700ffffff000000010000011c0000024cfc0200000015fb000000220062006100730065005f00630061006d006500720061002d0049006d00610067006500000000410000024c0000000000000000fb0000001c00460072006f006e00740061006c002d00430061006d006500720061000000003d000001260000000000000000fb0000001e0054006f007000520069006700680074002d00430061006d00650072006100000000410000003a0000000000000000fb0000001c0054006f0070004c006500660074002d00430061006d0065007200610000000041000003840000000000000000fb0000000c00430061006d00650072006100000000410000024c0000000000000000fb0000000c00430061006d006500720061010000003d000003420000000000000000fb0000002a0054006f0070005200690067006800740049006d006100670065002d004c006100620065006c0065006400000000410000024c0000000000000000fb0000000c00430061006d00650072006101000000410000024c0000000000000000fb000000280054006f0070004c0065006600740049006d006100670065002d004c006100620065006c006500640000000177000001160000000000000000fb000000340054006f00700043005200470042004400430061006d002d0049006d006100670065002d004c006100620065006c006c006500640000000120000002a50000000000000000fb0000003a0054006f00700043005200470042004400430061006d006500720061002d0049006d006100670065002d004c006100620065006c006c0065006401000001630000012a0000000000000000fb000000280054006f00700043005200470042004400430061006d006500720061002d0049006d00610067006500000001da000000b30000000000000000fb0000001a0054006f0070004c006500660074002d0049006d00610067006501000000410000024c0000000000000000fb0000001c0054006f007000520069006700680074002d0049006d0061006700650100000169000001240000000000000000fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001e004c00650066007400530074006500720065006f0049006d006100670065000000003d000001340000000000000000fb000000200052006900670068007400530074006500720065006f0049006d0061006700650000000122000000dd0000000000000000fb0000001600460072006f006e007400430061006d006500720061000000003d0000008b0000000000000000fb0000002a0052006900670068007400530074006500720065006f005700690064006500430061006d00650072006100000000ce0000008a0000000000000000fb00000026004c00650066007400530074006500720065006f00570069006400650049006d006100670065000000003d0000019d0000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d0065000000000000000780000002df00fffffffb0000000800540069006d00650100000000000004500000000000000000000004d0000002ef00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
