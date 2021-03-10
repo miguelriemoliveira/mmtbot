@@ -28,6 +28,14 @@ sudo apt install ros-<version>-joint-trajectory-controller
 sudo apt install libignition-common3 libignition-common3-graphics
 ```
 
+##### Add to .bashrc:
+```
+export ROS_BAGS="/home/<username>/bagfiles"
+export ATOM_DATASETS="/home/<username>//datasets"
+export GAZEBO_MODEL_PATH="`rospack find mmtbot_gazebo`/models:${GAZEBO_MODEL_PATH}"
+```
+
+
 # Running the simulation to collect a bag file:
 
 To run the system with simulation use:
