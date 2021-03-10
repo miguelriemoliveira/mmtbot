@@ -22,14 +22,14 @@
     Sets up image decompressors if needed, reads the urdf robot description.
 
 @arg bag_file  Absolute path to the playing bag.
-    default: $(env ROS_BAGS)/mmtbot/08_03_2021.bag
+    default: $(env ROS_BAGS)/mmtbot/10_03_2021.bag
 @arg bag_start Playback starting time (in seconds). default: 0.0
 @arg bag_rate  Playback rate. default: 1.0
 -->
 
 <launch>
 
-<arg name="bag_file"  default="$(env ROS_BAGS)/mmtbot/08_03_2021.bag"/>
+<arg name="bag_file"  default="$(env ROS_BAGS)/mmtbot/10_03_2021.bag"/>
 <arg name="bag_start" default="0"/>
 <arg name="bag_rate"  default ="1" />
 <arg name="rviz_file" default="$(find mmtbot_calibration)/rviz/set_initial_estimate.rviz"/>
