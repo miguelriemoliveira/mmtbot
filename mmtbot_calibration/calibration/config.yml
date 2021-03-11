@@ -37,7 +37,8 @@ description_file: "package://mmtbot_description/urdf/mmtbot.urdf.xacro"
 #bag_file: "$ROS_BAGS/mmtbot/21_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/24_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
-bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
+#bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
+bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
 
 # You must define a frame of reference for the optimization process.
 # It must exist in the transformation chains of all the sensors which are being calibrated.
