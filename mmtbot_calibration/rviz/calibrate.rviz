@@ -1,322 +1,157 @@
 Panels:
-  - Class: rviz/Displays
-    Help Height: 0
-    Name: Displays
-    Property Tree Widget:
-      Expanded:
-        - /Global Options1
-      Splitter Ratio: 0.763005793094635
-    Tree Height: 436
-  - Class: rviz/Selection
-    Name: Selection
-  - Class: rviz/Tool Properties
+- Class: rviz/Displays
+  Help Height: 0
+  Name: Displays
+  Property Tree Widget:
     Expanded:
-      - /2D Pose Estimate1
-      - /2D Nav Goal1
-      - /Publish Point1
-    Name: Tool Properties
-    Splitter Ratio: 0.5886790156364441
-  - Class: rviz/Views
-    Expanded:
-      - /Current View1
-    Name: Views
-    Splitter Ratio: 0.5
-  - Class: rviz/Time
-    Experimental: false
-    Name: Time
-    SyncMode: 0
-    SyncSource: ""
+    - /Global Options1
+    - /base_camera-Image1
+    Splitter Ratio: 0.763005793094635
+  Tree Height: 523
+- Class: rviz/Selection
+  Name: Selection
+- Class: rviz/Tool Properties
+  Expanded:
+  - /2D Pose Estimate1
+  - /2D Nav Goal1
+  - /Publish Point1
+  Name: Tool Properties
+  Splitter Ratio: 0.5886790156364441
+- Class: rviz/Views
+  Expanded:
+  - /Current View1
+  Name: Views
+  Splitter Ratio: 0.5
+- Class: rviz/Time
+  Experimental: false
+  Name: Time
+  SyncMode: 0
+  SyncSource: ''
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
   toolButtonStyle: 2
 Visualization Manager:
-  Class: ""
+  Class: ''
   Displays:
-    - Alpha: 0.5
-      Cell Size: 1
-      Class: rviz/Grid
-      Color: 160; 160; 164
-      Enabled: true
-      Line Style:
-        Line Width: 0.019999999552965164
-        Value: Lines
-      Name: Grid
-      Normal Cell Count: 0
-      Offset:
-        X: 0
-        Y: 0
-        Z: 0
-      Plane: XY
-      Plane Cell Count: 10
-      Reference Frame: world
-      Value: true
-    - Class: rviz/TF
-      Enabled: false
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-      Marker Alpha: 1
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: false
-      Show Axes: true
-      Show Names: false
-      Tree:
-        {}
-      Update Interval: 0
-      Value: false
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: calibrate/robot_meshes
-      Name: RobotMeshes-MarkerArray
-      Namespaces:
-        0: true
-        1: true
-        10: true
-        11: true
-        12: true
-        13: true
-        14: true
-        15: true
-        16: true
-        17: true
-        18: true
-        19: true
-        2: true
-        20: true
-        21: true
-        22: true
-        23: true
-        24: true
-        25: true
-        26: true
-        3: true
-        4: true
-        5: true
-        6: true
-        7: true
-        8: true
-        9: true
-      Queue Size: 10
-      Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: calibrate/patterns
-      Name: Patterns-MarkerArray
-      Namespaces:
-        0-corners: true
-        0-frame_sampled: true
-        0-mesh: true
-        1-corners: true
-        1-frame_sampled: true
-        1-mesh: true
-        10-corners: true
-        10-frame_sampled: true
-        10-mesh: true
-        11-corners: true
-        11-frame_sampled: true
-        11-mesh: true
-        12-corners: true
-        12-frame_sampled: true
-        12-mesh: true
-        13-corners: true
-        13-frame_sampled: true
-        13-mesh: true
-        14-corners: true
-        14-frame_sampled: true
-        14-mesh: true
-        15-corners: true
-        15-frame_sampled: true
-        15-mesh: true
-        16-corners: true
-        16-frame_sampled: true
-        16-mesh: true
-        17-corners: true
-        17-frame_sampled: true
-        17-mesh: true
-        18-corners: true
-        18-frame_sampled: true
-        18-mesh: true
-        19-corners: true
-        19-frame_sampled: true
-        19-mesh: true
-        2-corners: true
-        2-frame_sampled: true
-        2-mesh: true
-        20-corners: true
-        20-frame_sampled: true
-        20-mesh: true
-        21-corners: true
-        21-frame_sampled: true
-        21-mesh: true
-        22-corners: true
-        22-frame_sampled: true
-        22-mesh: true
-        23-corners: true
-        23-frame_sampled: true
-        23-mesh: true
-        24-corners: true
-        24-frame_sampled: true
-        24-mesh: true
-        25-corners: true
-        25-frame_sampled: true
-        25-mesh: true
-        26-corners: true
-        26-frame_sampled: true
-        26-mesh: true
-        3-corners: true
-        3-frame_sampled: true
-        3-mesh: true
-        4-corners: true
-        4-frame_sampled: true
-        4-mesh: true
-        5-corners: true
-        5-frame_sampled: true
-        5-mesh: true
-        6-corners: true
-        6-frame_sampled: true
-        6-mesh: true
-        7-corners: true
-        7-frame_sampled: true
-        7-mesh: true
-        8-corners: true
-        8-frame_sampled: true
-        8-mesh: true
-        9-corners: true
-        9-frame_sampled: true
-        9-mesh: true
-      Queue Size: 10
-      Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: calibrate/Miscellaneous
-      Name: Miscellaneous-MarkerArray
-      Namespaces:
-        {}
-      Queue Size: 10
-      Value: true
-    - Class: rviz/Image
-      Enabled: true
-      Image Topic: calibrate/c0/hand_camera/rgb/image_raw/labeled
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: hand_camera-Labels-Image
-      Normalize Range: true
-      Queue Size: 2
-      Transport Hint: raw
-      Unreliable: false
-      Value: true
-    - Class: rviz/Image
-      Enabled: true
-      Image Topic: calibrate/c0/world_camera/rgb/image_raw/labeled
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: world_camera-Labels-Image
-      Normalize Range: true
-      Queue Size: 2
-      Transport Hint: raw
-      Unreliable: false
-      Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: calibrate/labeled_data
-      Name: 3dlidar-LabeledData
-      Namespaces:
-        0-3dlidar: true
-        0-3dlidar-limit_points: true
-        1-3dlidar: true
-        1-3dlidar-limit_points: true
-        10-3dlidar: true
-        10-3dlidar-limit_points: true
-        11-3dlidar: true
-        11-3dlidar-limit_points: true
-        12-3dlidar: true
-        12-3dlidar-limit_points: true
-        13-3dlidar: true
-        13-3dlidar-limit_points: true
-        14-3dlidar: true
-        14-3dlidar-limit_points: true
-        15-3dlidar: true
-        15-3dlidar-limit_points: true
-        16-3dlidar: true
-        16-3dlidar-limit_points: true
-        17-3dlidar: true
-        17-3dlidar-limit_points: true
-        18-3dlidar: true
-        18-3dlidar-limit_points: true
-        19-3dlidar: true
-        19-3dlidar-limit_points: true
-        2-3dlidar: true
-        2-3dlidar-limit_points: true
-        20-3dlidar: true
-        20-3dlidar-limit_points: true
-        21-3dlidar: true
-        21-3dlidar-limit_points: true
-        22-3dlidar: true
-        22-3dlidar-limit_points: true
-        23-3dlidar: true
-        23-3dlidar-limit_points: true
-        24-3dlidar: true
-        24-3dlidar-limit_points: true
-        25-3dlidar: true
-        25-3dlidar-limit_points: true
-        26-3dlidar: true
-        26-3dlidar-limit_points: true
-        3-3dlidar: true
-        3-3dlidar-limit_points: true
-        4-3dlidar: true
-        4-3dlidar-limit_points: true
-        5-3dlidar: true
-        5-3dlidar-limit_points: true
-        6-3dlidar: true
-        6-3dlidar-limit_points: true
-        7-3dlidar: true
-        7-3dlidar-limit_points: true
-        8-3dlidar: true
-        8-3dlidar-limit_points: true
-        9-3dlidar: true
-        9-3dlidar-limit_points: true
-      Queue Size: 10
-      Value: true
+  - Alpha: 0.5
+    Cell Size: 1
+    Class: rviz/Grid
+    Color: 160; 160; 164
+    Enabled: true
+    Line Style:
+      Line Width: 0.02
+      Value: Lines
+    Name: Grid
+    Normal Cell Count: 0
+    Offset:
+      X: 0
+      Y: 0
+      Z: 0
+    Plane: XY
+    Plane Cell Count: 10
+    Reference Frame: world
+    Value: true
+  - Class: rviz/TF
+    Enabled: true
+    Frame Timeout: 15
+    Frames:
+      All Enabled: true
+    Marker Scale: 1
+    Name: TF
+    Show Arrows: false
+    Show Axes: true
+    Show Names: false
+    Tree: {}
+    Update Interval: 0
+    Value: false
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: calibrate/robot_meshes
+    Name: RobotMeshes-MarkerArray
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: calibrate/patterns
+    Name: Patterns-MarkerArray
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: calibrate/Miscellaneous
+    Name: Miscellaneous-MarkerArray
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
+  - Class: rviz/Image
+    Enabled: true
+    Image Topic: calibrate/c0/hand_camera/rgb/image_raw/labeled
+    Max Value: 1
+    Median window: 5
+    Min Value: 0
+    Name: hand_camera-Labels-Image
+    Normalize Range: true
+    Queue Size: 2
+    Transport Hint: raw
+    Unreliable: false
+    Value: false
+  - Class: rviz/Image
+    Enabled: true
+    Image Topic: calibrate/c0/world_camera/rgb/image_raw/labeled
+    Max Value: 1
+    Median window: 5
+    Min Value: 0
+    Name: world_camera-Labels-Image
+    Normalize Range: true
+    Queue Size: 2
+    Transport Hint: raw
+    Unreliable: false
+    Value: false
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: calibrate/labeled_data
+    Name: 3dlidar-LabeledData
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz/Interact
-      Hide Inactive Objects: true
-    - Class: rviz/MoveCamera
-    - Class: rviz/Select
-    - Class: rviz/FocusCamera
-    - Class: rviz/Measure
-    - Class: rviz/SetInitialPose
-      Theta std deviation: 0.2617993950843811
-      Topic: /initialpose
-      X std deviation: 0.5
-      Y std deviation: 0.5
-    - Class: rviz/SetGoal
-      Topic: /move_base_simple/goal
-    - Class: rviz/PublishPoint
-      Single click: true
-      Topic: /clicked_point
-    - Class: rviz_visual_tools/KeyTool
+  - Class: rviz/Interact
+    Hide Inactive Objects: true
+  - Class: rviz/MoveCamera
+  - Class: rviz/Select
+  - Class: rviz/FocusCamera
+  - Class: rviz/Measure
+  - Class: rviz/SetInitialPose
+    Theta std deviation: 0.2617993950843811
+    Topic: /initialpose
+    X std deviation: 0.5
+    Y std deviation: 0.5
+  - Class: rviz/SetGoal
+    Topic: /move_base_simple/goal
+  - Class: rviz/PublishPoint
+    Single click: true
+    Topic: /clicked_point
+  - Class: rviz_visual_tools/KeyTool
   Value: true
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 9.614106178283691
+      Distance: 8.35604476928711
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Field of View: 0.7853981852531433
       Focal Point:
         X: 0.3314114809036255
         Y: 0.6464090347290039
@@ -326,37 +161,38 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.44479700922966003
+      Pitch: 0.46479693055152893
       Target Frame: <Fixed Frame>
-      Yaw: 4.677180767059326
+      Value: XYOrbit (rviz)
+      Yaw: 2.752181053161621
     Saved:
-      - Class: rviz/Orbit
-        Distance: 4.057810306549072
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Field of View: 0.7853981852531433
-        Focal Point:
-          X: -0.424695760011673
-          Y: 0.802316427230835
-          Z: 0.9974352121353149
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.5447967052459717
-        Target Frame: <Fixed Frame>
-        Yaw: 3.929020881652832
+    - Class: rviz/Orbit
+      Distance: 4.057810306549072
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.424695760011673
+        Y: 0.802316427230835
+        Z: 0.9974352121353149
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Orbit
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.5447967052459717
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 3.929020881652832
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1043
+  Height: 683
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000003b9fc020000000dfb0000001200530065006c0065006300740069006f006e000000003d0000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000001f1000000c900fffffffb0000000a00560069006500770073000000018b00000102000000a400fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001a00460072006f006e00740061006c00430061006d006500720061000000012e000001170000000000000000fb000000300062006100730065005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006500000001da000000b30000000000000000fb0000003000680061006e0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d0061006700650100000234000000de0000001600fffffffb000000320077006f0072006c0064005f00630061006d006500720061002d004c006100620065006c0073002d0049006d0061006700650100000318000000de0000001600ffffff000000010000011c0000024cfc0200000015fb000000220062006100730065005f00630061006d006500720061002d0049006d00610067006500000000410000024c0000000000000000fb0000001c00460072006f006e00740061006c002d00430061006d006500720061000000003d000001260000000000000000fb0000001e0054006f007000520069006700680074002d00430061006d00650072006100000000410000003a0000000000000000fb0000001c0054006f0070004c006500660074002d00430061006d0065007200610000000041000003840000000000000000fb0000000c00430061006d00650072006100000000410000024c0000000000000000fb0000000c00430061006d006500720061010000003d000003420000000000000000fb0000002a0054006f0070005200690067006800740049006d006100670065002d004c006100620065006c0065006400000000410000024c0000000000000000fb0000000c00430061006d00650072006101000000410000024c0000000000000000fb000000280054006f0070004c0065006600740049006d006100670065002d004c006100620065006c006500640000000177000001160000000000000000fb000000340054006f00700043005200470042004400430061006d002d0049006d006100670065002d004c006100620065006c006c006500640000000120000002a50000000000000000fb0000003a0054006f00700043005200470042004400430061006d006500720061002d0049006d006100670065002d004c006100620065006c006c0065006401000001630000012a0000000000000000fb000000280054006f00700043005200470042004400430061006d006500720061002d0049006d00610067006500000001da000000b30000000000000000fb0000001a0054006f0070004c006500660074002d0049006d00610067006501000000410000024c0000000000000000fb0000001c0054006f007000520069006700680074002d0049006d0061006700650100000169000001240000000000000000fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001e004c00650066007400530074006500720065006f0049006d006100670065000000003d000001340000000000000000fb000000200052006900670068007400530074006500720065006f0049006d0061006700650000000122000000dd0000000000000000fb0000001600460072006f006e007400430061006d006500720061000000003d0000008b0000000000000000fb0000002a0052006900670068007400530074006500720065006f005700690064006500430061006d00650072006100000000ce0000008a0000000000000000fb00000026004c00650066007400530074006500720065006f00570069006400650049006d006100670065000000003d0000019d0000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d0065000000000000000780000002eb00fffffffb0000000800540069006d0065010000000000000450000000000000000000000250000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000024cfc020000000bfb0000001200530065006c0065006300740069006f006e000000003d0000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000410000024c000000dd00fffffffb0000000a00560069006500770073000000018b00000102000000b000fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001a00460072006f006e00740061006c00430061006d006500720061000000012e000001170000000000000000fb000000300062006100730065005f00630061006d006500720061002d004c006100620065006c0073002d0049006d00610067006500000001da000000b30000000000000000000000010000011c0000024cfc0200000015fb000000220062006100730065005f00630061006d006500720061002d0049006d00610067006500000000410000024c0000001600fffffffb0000001c00460072006f006e00740061006c002d00430061006d006500720061000000003d000001260000000000000000fb0000001e0054006f007000520069006700680074002d00430061006d00650072006100000000410000003a0000000000000000fb0000001c0054006f0070004c006500660074002d00430061006d0065007200610000000041000003840000000000000000fb0000000c00430061006d00650072006100000000410000024c0000000000000000fb0000000c00430061006d006500720061010000003d000003420000000000000000fb0000002a0054006f0070005200690067006800740049006d006100670065002d004c006100620065006c0065006400000000410000024c0000000000000000fb0000000c00430061006d00650072006101000000410000024c0000000000000000fb000000280054006f0070004c0065006600740049006d006100670065002d004c006100620065006c006500640000000177000001160000000000000000fb000000340054006f00700043005200470042004400430061006d002d0049006d006100670065002d004c006100620065006c006c006500640000000120000002a50000000000000000fb0000003a0054006f00700043005200470042004400430061006d006500720061002d0049006d006100670065002d004c006100620065006c006c0065006401000001630000012a0000000000000000fb000000280054006f00700043005200470042004400430061006d006500720061002d0049006d00610067006500000001da000000b30000000000000000fb0000001a0054006f0070004c006500660074002d0049006d00610067006501000000410000024c0000000000000000fb0000001c0054006f007000520069006700680074002d0049006d0061006700650100000169000001240000000000000000fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001e004c00650066007400530074006500720065006f0049006d006100670065000000003d000001340000000000000000fb000000200052006900670068007400530074006500720065006f0049006d0061006700650000000122000000dd0000000000000000fb0000001600460072006f006e007400430061006d006500720061000000003d0000008b0000000000000000fb0000002a0052006900670068007400530074006500720065006f005700690064006500430061006d00650072006100000000ce0000008a0000000000000000fb00000026004c00650066007400530074006500720065006f00570069006400650049006d006100670065000000003d0000019d0000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d00650000000000000007800000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000003e60000024c00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -365,10 +201,8 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 960
+  Width: 1366
   X: 0
-  Y: 0
-  hand_camera-Labels-Image:
-    collapsed: false
-  world_camera-Labels-Image:
+  Y: 28
+  base_camera-Image:
     collapsed: false
