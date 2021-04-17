@@ -594,13 +594,13 @@
     <child link="base_link"/>
   </joint>
   <joint name="hand_camera_joint" type="fixed">
-    <origin xyz="-0.02 0.05 0.07" rpy="0.0 -0.0 0.0"/>
+    <origin xyz="0.7800358533859253 0.05000000074505806 0.07000000029802322" rpy="0.0 -0.0 0.0"/>
     <parent link="ee_link"/>
     <child link="hand_camera_link"/>
   </joint>
   <link name="hand_camera_link">
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <mass value="0.564"/>
       <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.00049894" iyz="0.0" izz="0.003879257"/>
     </inertial>
@@ -767,13 +767,13 @@
     <child link="tripod_right_support"/>
   </joint>
   <joint name="3dlidar_base_mount_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.001" rpy="0.0 -0.0 0.0"/>
+    <origin xyz="-0.8649045825004578 0.0 0.9622363448143005" rpy="0.0 -0.0 0.0"/>
     <parent link="tripod_left_support"/>
     <child link="3dlidar_base_link"/>
   </joint>
   <link name="3dlidar_base_link">
     <inertial>
-      <origin xyz="0.0 0.0 0.03585" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.03585" rpy="0.0 0.0 0.0"/>
       <mass value="0.83"/>
       <inertia ixx="0.000908059425" ixy="0.0" ixz="0.0" iyy="0.000908059425" iyz="0.0" izz="0.0011049624"/>
     </inertial>
@@ -801,12 +801,12 @@
   </joint>
   <link name="3dlidar">
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <mass value="0.01"/>
       <inertia ixx="1e-07" ixy="0.0" ixz="0.0" iyy="1e-07" iyz="0.0" izz="1e-07"/>
     </inertial>
     <visual>
-      <origin xyz="0.0 0.0 -0.0377" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 -0.0377" rpy="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae"/>
       </geometry>
@@ -854,13 +854,13 @@
     </sensor>
   </gazebo>
   <joint name="world_camera_joint" type="fixed">
-    <origin xyz="0.02 0.07 0.015" rpy="0.0 -0.0 0.0"/>
+    <origin xyz="-1.0961196422576904 -1.1593269109725952 0.014999999664723873" rpy="-0.7709805919192392 0.2310411274833507 0.23146684024077507"/>
     <parent link="tripod_right_support"/>
     <child link="world_camera_link"/>
   </joint>
   <link name="world_camera_link">
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <mass value="0.564"/>
       <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.00049894" iyz="0.0" izz="0.003879257"/>
     </inertial>
