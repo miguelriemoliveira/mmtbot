@@ -59,7 +59,7 @@
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- Visualization -->
-<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true"/>
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true" output="screen"/>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 </launch>
