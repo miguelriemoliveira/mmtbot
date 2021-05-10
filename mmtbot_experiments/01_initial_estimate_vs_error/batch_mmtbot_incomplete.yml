@@ -23,38 +23,33 @@ dataset_path: '{{ home }}/datasets/train_dataset_1'
 cmd_prefix: 'rosrun atom_calibration calibrate -json {{ dataset_path }}/data_collected.json '
 
 # batch variables. these are read and used for batch execution.
-output_folder: '{{ dataset_path }}/results_partial'
+output_folder: '{{ dataset_path }}/results_incomplete'
 
 batches:
 
-    - name: "partial_0"
-      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,3,5,7,9,10,11,12,15,16]' -nig 0.05 0.02 -ss 1"
+    - name: "incomplete_0"
+      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,6,7,9,10,14,15,18,19,29]' -nig 0.05 0.02 -ss 1"
       files_to_collect:
         - '{{ dataset_path }}/atom_calibration.json'
         -  '/tmp/optimized.urdf.xacro'
 
-    - name: "partial_1"
-      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,3,5,7,9,10,11,12,15,16,1]' -nig 0.05 0.02 -ss 1"
+    - name: "incomplete_2"
+      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,6,7,9,10,14,15,18,19,29,1,2]' -nig 0.05 0.02 -ss 1"
       files_to_collect:
         - '{{ dataset_path }}/atom_calibration.json'
         -  '/tmp/optimized.urdf.xacro'
 
-    - name: "partial_3"
-      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,3,5,7,9,10,11,12,15,16,1,2,4]' -nig 0.05 0.02 -ss 1"
+    - name: "incomplete_3"
+      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,6,7,9,10,14,15,18,19,29,1,2,3,4]' -nig 0.05 0.02 -ss 1"
       files_to_collect:
         - '{{ dataset_path }}/atom_calibration.json'
         -  '/tmp/optimized.urdf.xacro'
 
-    - name: "partial_6"
-      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,3,5,7,9,10,11,12,15,16,1,2,4,6,8,13]' -nig 0.05 0.02 -ss 1"
+    - name: "incomplete_5"
+      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,6,7,9,10,14,15,18,19,29,1,2,3,4,5]' -nig 0.05 0.02 -ss 1"
       files_to_collect:
         - '{{ dataset_path }}/atom_calibration.json'
         -  '/tmp/optimized.urdf.xacro'
 
-    - name: "partial_9"
-      cmd: "{{ cmd_prefix }} -csf 'lambda name: int(name) in [0,3,5,7,9,10,11,12,15,16,1,2,4,6,8,13,14,19,24]' -nig 0.05 0.02 -ss 1"
-      files_to_collect:
-        - '{{ dataset_path }}/atom_calibration.json'
-        -  '/tmp/optimized.urdf.xacro'
 
 
