@@ -44,9 +44,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- Playback the bag file -->
 <param name="/use_sim_time" value="true"/>
-<!--<node pkg="rosbag" type="play" name="rosbag_play" output="screen"-->
-<!--    args=" $(arg bag_file) &#45;&#45;clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null"/>-->
-    <node pkg="rosbag" type="play" name="rosbag_play" args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null" />
+<node pkg="rosbag" type="play" name="rosbag_play" output="screen"
+    args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null"/>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
@@ -60,7 +59,7 @@
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- Visualization -->
-<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" output="screen" required="true"/>
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_file)" required="true" output="screen"/>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 </launch>
