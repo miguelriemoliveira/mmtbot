@@ -43,7 +43,7 @@
 <arg name="rviz_file"   default="$(find mmtbot_calibration)/rviz/collect_data.rviz"/>
 <arg name="description_file" default="$(find mmtbot_calibration)/urdf/initial_estimate.urdf.xacro"/>
 <!-- arguments to be passed onto playbag.launch  -->
-<arg name="bag_file"  default="$(env ROS_BAGS)/mmtbot/31_03_2021.bag"/>
+<arg name="bag_file"  default="$(env ROS_BAGS)/mmtbot/11_03_2021.bag"/>
 <arg name="bag_start" default="0"/>
 <arg name="bag_rate"  default ="1" />
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
