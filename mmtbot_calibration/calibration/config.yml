@@ -30,7 +30,7 @@
 #   - ROS Package Reference
 #       Example: package://your_package/urdf/description.urdf.xacro
 #
-description_file: "package://mmtbot_description/urdf/larcc.urdf.xacro"
+description_file: "package://mmtbot_description/urdf/mmtbot.urdf.xacro"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
 #bag_file: "$ROS_BAGS/mmtbot/16_02_2021.bag"
