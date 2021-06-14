@@ -1,23 +1,30 @@
 import rospy
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
-import math
+from sensor_msgs.msg import CameraInfo, Image
+from visualization_msgs.msg import MarkerArray
+import random
 
-rospy.init_node('draw_frustum')
-pub_line_min_dist = rospy.Publisher('~draw_frustum', Marker, queue_size=1)
+import math
+import image_geometry
+
+rospy.init_node('draw_frustums')
+# n=get_camera_topics().shape()
+# print(n)
+publisher = rospy.Publisher('~draw_frustums', MarkerArray, queue_size=1)
 rospy.loginfo('Starting to draw camera frustum')
 
 
 def get_camera_topics():
     all_topics = rospy.get_published_topics()
-    # print(topics[1])
-    camera_topics = all_topics
-
-    return camera_topics
-
-
-def get_parameters():
-    return 0
+    # print(all_topics)
+    flat_list = [item for sublist in all_topics for item in sublist]
+    filtered_topics = [x for x in flat_list if (
+                x.startswith('/world_camera') and x.endswith('camera_info') and not x.endswith(
+            '/ir/camera_info') and not x.endswith('/depth_registered/camera_info') and not x.endswith(
+            '/projector/camera_info'))]
+    print(filtered_topics)
+    return filtered_topics
 
 
 def calculate_frustum(w, h, f_x, f_y, frame_id):
@@ -31,9 +38,9 @@ def calculate_frustum(w, h, f_x, f_y, frame_id):
 
     # marker color
     marker.color.a = 1.0
-    marker.color.r = 1.0
-    marker.color.g = 1.0
-    marker.color.b = 0.0
+    marker.color.r = random.random()
+    marker.color.g = random.random()
+    marker.color.b = random.random()
 
     # marker orientaiton
     marker.pose.orientation.x = 0.0
@@ -55,7 +62,7 @@ def calculate_frustum(w, h, f_x, f_y, frame_id):
     P7 = Point()
     P8 = Point()
 
-    Z_near = 2
+    Z_near = 0.3
     Z_far = 5
     fov_x = 2 * math.atan2(w, (2 * f_x))
     fov_y = 2 * math.atan2(h, (2 * f_y))
@@ -140,14 +147,35 @@ def calculate_frustum(w, h, f_x, f_y, frame_id):
 
 
 while not rospy.is_shutdown():
-    frame_id = "map"
-    w = 640
-    h = 480
-    f_x = 529.74
-    f_y = 530.53
+    # frame_id = "map"
+    # w = 640
+    # h = 480
+    # f_x = 529.74
+    # f_y = 530.53
+    marker_array = MarkerArray()
+    topics = get_camera_topics()
+    pinhole_camera_model = image_geometry.PinholeCameraModel()
+    n = 0
 
-    marker = calculate_frustum(w, h, f_x, f_y, frame_id)
-    # Publish the Marker
-    pub_line_min_dist.publish(marker)
+    # camera_info_topic = "/io/internal_camera/{}/camera_info".format(camera_name)
+    for topic in topics:
+        camera_info = rospy.wait_for_message(topic, CameraInfo)
+        pinhole_camera_model.fromCameraInfo(camera_info)
+        f_x = pinhole_camera_model.fx()
+        f_y = pinhole_camera_model.fy()
+        frame_id = pinhole_camera_model.tfFrame()
+        size = pinhole_camera_model.fullResolution()
+        # print(f_x,f_y)
+        # print(frame_id)
+        # print(size)
+        w = size[0]
+        h = size[1]
+        marker_n = calculate_frustum(w, h, f_x, f_y, frame_id)
+        marker_n.id = n
+        # Publish the Marker
+        marker_array.markers.append(marker_n)
+        n += 1
+        # pub_line_min_dist.publish(marker)
 
-    rospy.sleep(0.5)
+    publisher.publish(marker_array)
+    rospy.sleep(1)
