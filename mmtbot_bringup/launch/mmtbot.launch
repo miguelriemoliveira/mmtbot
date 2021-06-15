@@ -37,6 +37,8 @@
         <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch"/>
     </group>
 
+<!--     <node pkg="mmtbot" name="frustum" type="frustum.py" output="screen"/>-->
+
 
 
 </launch>

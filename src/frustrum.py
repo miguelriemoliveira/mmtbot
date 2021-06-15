@@ -1,4 +1,6 @@
+import numpy
 import rospy
+from numpy import rad2deg
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 from sensor_msgs.msg import CameraInfo, Image
@@ -20,14 +22,15 @@ def get_camera_topics():
     # print(all_topics)
     flat_list = [item for sublist in all_topics for item in sublist]
     filtered_topics = [x for x in flat_list if (
-                x.startswith('/world_camera') and x.endswith('camera_info') and not x.endswith(
+        (x.startswith('/world_camera') and x.endswith('camera_info') and not x.endswith(
             '/ir/camera_info') and not x.endswith('/depth_registered/camera_info') and not x.endswith(
-            '/projector/camera_info'))]
+            '/projector/camera_info') and not x.endswith('/sw_registered/camera_info'))) or (
+                                   x.startswith('/hand_camera') and x.endswith('camera_info'))]
     print(filtered_topics)
     return filtered_topics
 
 
-def calculate_frustum(w, h, f_x, f_y, frame_id):
+def calculate_frustum(w, h, f_x, f_y, frame_id,color):
     marker = Marker()
 
     marker.type = marker.LINE_LIST
@@ -38,9 +41,9 @@ def calculate_frustum(w, h, f_x, f_y, frame_id):
 
     # marker color
     marker.color.a = 1.0
-    marker.color.r = random.random()
-    marker.color.g = random.random()
-    marker.color.b = random.random()
+    marker.color.r = color[0]
+    marker.color.g = color[1]
+    marker.color.b = color[2]
 
     # marker orientaiton
     marker.pose.orientation.x = 0.0
@@ -63,15 +66,23 @@ def calculate_frustum(w, h, f_x, f_y, frame_id):
     P8 = Point()
 
     Z_near = 0.3
-    Z_far = 5
+    Z_far = 8
     fov_x = 2 * math.atan2(w, (2 * f_x))
     fov_y = 2 * math.atan2(h, (2 * f_y))
 
-    x_n = (fov_x * 25.4 * Z_near) / f_x
-    y_n = (fov_y * 25.4 * Z_near) / f_y
+    print(rad2deg(fov_x), rad2deg(fov_y))
 
-    x_f = (fov_x * 25.4 * Z_far) / f_x
-    y_f = (fov_y * 25.4 * Z_far) / f_y
+    # x_n = (fov_x * 25.4 * Z_near) / f_x
+    # y_n = (fov_y * 25.4 * Z_near) / f_y
+    #
+    # x_f = (fov_x * 25.4 * Z_far) / f_x
+    # y_f = (fov_y * 25.4 * Z_far) / f_y
+
+    x_n = math.tan(fov_x / 2) * Z_near
+    y_n = math.tan(fov_y / 2) * Z_near
+
+    x_f = math.tan(fov_x / 2) * Z_far
+    y_f = math.tan(fov_y / 2) * Z_far
 
     P1.x = -x_n
     P1.y = y_n
@@ -157,6 +168,9 @@ while not rospy.is_shutdown():
     pinhole_camera_model = image_geometry.PinholeCameraModel()
     n = 0
 
+    colors = numpy.array([[255, 0, 0], [255, 128, 0], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 128, 255], [0, 0, 255],
+              [128, 0, 255], [255, 0, 255], [255, 0, 128]])
+
     # camera_info_topic = "/io/internal_camera/{}/camera_info".format(camera_name)
     for topic in topics:
         camera_info = rospy.wait_for_message(topic, CameraInfo)
@@ -170,7 +184,8 @@ while not rospy.is_shutdown():
         # print(size)
         w = size[0]
         h = size[1]
-        marker_n = calculate_frustum(w, h, f_x, f_y, frame_id)
+        marker_n = calculate_frustum(w, h, f_x, f_y, frame_id, colors[n]/255)
+        # print(colors[n])
         marker_n.id = n
         # Publish the Marker
         marker_array.markers.append(marker_n)

@@ -205,20 +205,20 @@ def processFeedback( feedback ):
         # except rospy.ServiceException:
         #     print("Service call failed: ")
 
-        markers = MarkerArray()
-        m = Marker(header=Header(frame_id="world", stamp=rospy.Time.now()),
-                   ns=model_name, id=0, frame_locked=False,
-                   type=Marker.MESH_RESOURCE, action=Marker.ADD, lifetime=rospy.Duration(0),
-                   pose=Pose(position=Point(x=pose.position.x, y=pose.position.y, z=pose.position.z),
-                             orientation=Quaternion(x=pose.orientation.x, y=pose.orientation.y, z=pose.orientation.z,
-                                                    w=pose.orientation.w)),
-                   scale=Vector3(x=1.0, y=1.0, z=1.0),
-                   color=ColorRGBA(r=1, g=1, b=1, a=1))
-
-        m.mesh_resource = 'package://mmtbot_gazebo/models/charuco_800x600/charuco_800x600.dae'
-        m.mesh_use_embedded_materials = True
-        markers.markers.append(m)
-        pub.publish(markers)
+        # markers = MarkerArray()
+        # m = Marker(header=Header(frame_id="world", stamp=rospy.Time.now()),
+        #            ns=model_name, id=0, frame_locked=False,
+        #            type=Marker.MESH_RESOURCE, action=Marker.ADD, lifetime=rospy.Duration(0),
+        #            pose=Pose(position=Point(x=pose.position.x, y=pose.position.y, z=pose.position.z),
+        #                      orientation=Quaternion(x=pose.orientation.x, y=pose.orientation.y, z=pose.orientation.z,
+        #                                             w=pose.orientation.w)),
+        #            scale=Vector3(x=1.0, y=1.0, z=1.0),
+        #            color=ColorRGBA(r=1, g=1, b=1, a=0.5))
+        #
+        # m.mesh_resource = 'package://mmtbot_gazebo/models/charuco_800x600/charuco_800x600.dae'
+        # m.mesh_use_embedded_materials = True
+        # markers.markers.append(m)
+        # pub.publish(markers)
         #
         #
         # from tf.transformations import euler_from_quaternion, quaternion_from_euler
