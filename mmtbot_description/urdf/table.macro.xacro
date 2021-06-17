@@ -50,7 +50,7 @@
         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
         <link name="${name}"/>
 
-        <joint name="world_to_${name}" type="fixed">
+        <joint name="${parent}_to_${name}" type="fixed">
             <parent link="${parent}"/>
             <child link="${name}" />
             <xacro:insert_block name="origin"/>
