@@ -53,16 +53,8 @@
     </xacro:tripod_macro>
 
     <!-- Put 3d lidar in the scene-->
-    <xacro:VLP-16 name="3dlidar_1" parent="tripod_left_support" topic="/3dlidar_1/points">
+    <xacro:VLP-16 name="3dlidar" parent="tripod_left_support" topic="/3dlidar/points">
         <origin xyz="0 0 0.001" rpy="0 0 0" />
-    </xacro:VLP-16>
-
-    <xacro:VLP-16 name="3dlidar_2" parent="tripod_left_support" topic="/3dlidar_2/points">
-        <origin xyz="0.5 0 0.001" rpy="0 0 0" />
-    </xacro:VLP-16>
-
-    <xacro:VLP-16 name="3dlidar_3" parent="tripod_left_support" topic="/3dlidar_3/points">
-        <origin xyz="1 0 0.001" rpy="0 0 0" />
     </xacro:VLP-16>
 
     <xacro:sensor_astra prefix="world_camera" parent="tripod_right_support">

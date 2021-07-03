@@ -18,5 +18,8 @@
         </node>
 
 
+        <!--        /hand_camera/depth/points-->
+        <!--        /world_camera/depth/points-->
+
 </launch>
 

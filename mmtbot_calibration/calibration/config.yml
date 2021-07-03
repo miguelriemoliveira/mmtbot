@@ -40,6 +40,9 @@ bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
+#bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
+
+
 
 # You must define a frame of reference for the optimization process.
 # It must exist in the transformation chains of all the sensors which are being calibrated.
@@ -73,8 +76,10 @@ sensors:
 
     world_camera:
         link: "world_camera_rgb_optical_frame"
-        parent_link: "tripod_right_support"
-        child_link: "world_camera_link"
+#        parent_link: "tripod_right_support"
+#        child_link: "world_camera_link"
+        parent_link: "tripod_plate"
+        child_link: "tripod_right_support"
         topic_name: "/world_camera/rgb/image_raw"
 
     3dlidar:
@@ -82,6 +87,10 @@ sensors:
         parent_link: "tripod_left_support"
         child_link: "3dlidar_base_link"
         topic_name: "/3dlidar/points"
+
+#additional_data:
+#  world_camera_point_cloud:
+#    topic_name: "/world_camera/depth/points"
 
 # The calibration requires a detectable pattern.
 # This section describes the properties of the calibration pattern used in th calibration.
