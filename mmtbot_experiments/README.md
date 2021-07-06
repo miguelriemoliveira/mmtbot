@@ -26,8 +26,6 @@ Open mmtbot analysis.ipynb on Jupyter.
 If you want to generate commands for the batch execution run the cell "Create commands for batch execution" with the lines 
 
 ```
-
-import numpy as np
 total=50
 distances=np.linspace(0,0.75,total)
 angles=np.linspace(0,0.75,total)
