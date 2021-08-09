@@ -18,24 +18,24 @@
     <!--    </include>-->
 
     <include if="$(arg sim)" file="$(find mmtbot_gazebo)/launch/mmtbot.launch">
-        <arg name="limited" value="$(arg limited)"/>
+<!--        <arg name="limited" value="$(arg limited)"/>-->
         <arg name="gui"     value="$(arg gui)"/>
     </include>
 
-    <group if="$(arg moveit)">
-        <include file="$(find ur10_e_moveit_config)/launch/ur10_e_moveit_planning_execution.launch">
-            <arg name="limited" value="$(arg limited)"/>
-            <arg name="sim"     value="$(arg sim)"/>
-        </include>
-        <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch">
-            <arg name="config" value="true"/>
-        </include>
+<!--    <group if="$(arg moveit)">-->
+<!--        <include file="$(find ur10_e_moveit_config)/launch/ur10_e_moveit_planning_execution.launch">-->
+<!--            <arg name="limited" value="$(arg limited)"/>-->
+<!--            <arg name="sim"     value="$(arg sim)"/>-->
+<!--        </include>-->
+<!--        <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch">-->
+<!--            <arg name="config" value="true"/>-->
+<!--        </include>-->
 
 
-        <!-- If database loading was enabled, start mongodb as well -->
-<!--        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>-->
-        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch"/>
-    </group>
+<!--        &lt;!&ndash; If database loading was enabled, start mongodb as well &ndash;&gt;-->
+<!--&lt;!&ndash;        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>&ndash;&gt;-->
+<!--        <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch"/>-->
+<!--    </group>-->
 
 <!--     <node pkg="mmtbot" name="frustum" type="frustum.py" output="screen"/>-->
 

@@ -1,57 +1,84 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
-  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
-  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <arg name="gui"/>
 
-  <!-- startup simulated world -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>
-    <arg name="paused" value="$(arg paused)"/>
-<!--    <arg name="paused" value="true"/>-->
+  <include file="$(find ur_gazebo)/launch/ur10e_bringup.launch">
     <arg name="gui" value="$(arg gui)"/>
-<!--    <arg name="debug" value="true"/>--> -->
+    <arg name="robot_description_file" value="$(find ur_gazebo)/launch/inc/load_mmtbot_ur10e.launch.xml"/>
+<!--    <arg name="robot_description_file" value="$(find ur_gazebo)/launch/inc/load_ur10e.launch.xml"/>-->
+<!--    <arg name="robot_description_file" value="$(find larcc_description)/urdf/larcc.urdf.xacro"/>-->
   </include>
 
-  <!--  https://answers.ros.org/question/296720/delay-in-jointstates/-->
-  <param name="/use_sim_time" value="true"/>
-
-  <!-- send robot urdf to param server -->
-  <include file="$(find mmtbot_description)/launch/upload.launch">
-    <arg name="limited" value="$(arg limited)"/>
-  </include>
-
-  <!-- push robot_description to factory and spawn robot in gazebo -->
-  <!-- WARN: Cannot add xyz her otherwise gazebo simulated data will not align with rviz.-->
+<!--  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description-->
+<!--          -model robot -z 0 -J shoulder_pan_joint 0.3" respawn="false" output="screen"/>-->
 
 
-<!--  left_finger_joint-->
-<!--  right_finger_joint-->
-<!--  shoulder_lift_joint-->
-<!--  shoulder_pan_joint-->
-<!--  wrist_1_joint-->
-<!--  wrist_2_joint-->
-<!--  wrist_3_joint-->
+    <!-- startup simulated world -->
+<!--  <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
+<!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>-->
+<!--    <arg name="paused" value="$(arg paused)"/>-->
+<!--&lt;!&ndash;    <arg name="paused" value="true"/>&ndash;&gt;-->
+<!--    <arg name="gui" value="$(arg gui)"/>-->
+<!--&lt;!&ndash;    <arg name="debug" value="true"/>&ndash;&gt; &ndash;&gt;-->
+<!--  </include>-->
 
-<!--  , 4.3559242003650514e-09, -3.0820748745206933e-09, -1.1078814372989054, 4.737856279161653, -2.201401106333254, 0.07296412602779068, -1.6473584765568834-->
-  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description
-          -model robot" respawn="false" output="screen"/>
-<!--   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -->
-<!--           -model robot -z 0 -J elbow_joint 0.3" respawn="false" output="screen"/> -->
-<!--          -->
-
-  <include file="$(find ur_e_gazebo)/launch/controller_utils.launch"/>
-
-  <!-- start this controller -->
-  <rosparam file="$(find ur_e_gazebo)/controller/arm_controller_ur10e.yaml" command="load"/>
-  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller gripper_controller" respawn="false" output="screen"/>
-
-  <!-- load other controllers -->
-  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller"/>
-
-  <!-- start a fake weiss gripper -->
-<!--  <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>-->
-
-  <!-- Start interactive positioning of pattern -->
-  <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>
 </launch>
+
+
+
+<!--<launch>-->
+<!--  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />-->
+<!--  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />-->
+<!--  <arg name="gui" default="true" doc="Starts gazebo gui" />-->
+
+<!--  &lt;!&ndash; startup simulated world &ndash;&gt;-->
+<!--  <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
+<!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>-->
+<!--    <arg name="paused" value="$(arg paused)"/>-->
+<!--&lt;!&ndash;    <arg name="paused" value="true"/>&ndash;&gt;-->
+<!--    <arg name="gui" value="$(arg gui)"/>-->
+<!--&lt;!&ndash;    <arg name="debug" value="true"/>&ndash;&gt; &ndash;&gt;-->
+<!--  </include>-->
+
+<!--  &lt;!&ndash;  https://answers.ros.org/question/296720/delay-in-jointstates/&ndash;&gt;-->
+<!--  <param name="/use_sim_time" value="true"/>-->
+
+<!--  &lt;!&ndash; send robot urdf to param server &ndash;&gt;-->
+<!--  <include file="$(find mmtbot_description)/launch/upload.launch">-->
+<!--    <arg name="limited" value="$(arg limited)"/>-->
+<!--  </include>-->
+
+<!--  &lt;!&ndash; push robot_description to factory and spawn robot in gazebo &ndash;&gt;-->
+<!--  &lt;!&ndash; WARN: Cannot add xyz her otherwise gazebo simulated data will not align with rviz.&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;  left_finger_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  right_finger_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  shoulder_lift_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  shoulder_pan_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  wrist_1_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  wrist_2_joint&ndash;&gt;-->
+<!--&lt;!&ndash;  wrist_3_joint&ndash;&gt;-->
+
+<!--&lt;!&ndash;  , 4.3559242003650514e-09, -3.0820748745206933e-09, -1.1078814372989054, 4.737856279161653, -2.201401106333254, 0.07296412602779068, -1.6473584765568834&ndash;&gt;-->
+<!--  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description-->
+<!--          -model robot" respawn="false" output="screen"/>-->
+<!--&lt;!&ndash;   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description &ndash;&gt;-->
+<!--&lt;!&ndash;           -model robot -z 0 -J elbow_joint 0.3" respawn="false" output="screen"/> &ndash;&gt;-->
+<!--&lt;!&ndash;          &ndash;&gt;-->
+
+<!--  <include file="$(find ur_e_gazebo)/launch/controller_utils.launch"/>-->
+
+<!--  &lt;!&ndash; start this controller &ndash;&gt;-->
+<!--  <rosparam file="$(find ur_e_gazebo)/controller/arm_controller_ur10e.yaml" command="load"/>-->
+<!--  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller gripper_controller" respawn="false" output="screen"/>-->
+
+<!--  &lt;!&ndash; load other controllers &ndash;&gt;-->
+<!--  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller"/>-->
+
+<!--  &lt;!&ndash; start a fake weiss gripper &ndash;&gt;-->
+<!--&lt;!&ndash;  <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>&ndash;&gt;-->
+
+<!--  &lt;!&ndash; Start interactive positioning of pattern &ndash;&gt;-->
+<!--  <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>-->
+<!--</launch>-->
