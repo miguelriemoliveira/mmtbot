@@ -40,7 +40,7 @@ export GAZEBO_MODEL_PATH="`rospack find mmtbot_gazebo`/models:${GAZEBO_MODEL_PAT
 
 To run the system with simulation use:
 
-    roslaunch mmtbot_bringup sim.launch gui:=true
+    roslaunch mmtbot_bringup mmtbot.launch gui:=true sim:=true moveit:=true
 
 Setting gui:=false will not launch gazebo which will make it faster.
 

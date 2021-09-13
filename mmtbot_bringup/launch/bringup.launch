@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- ###############################################-->
+    <!-- Arguments -->
+    <!-- ###############################################-->
+    <arg name="sim" default="true" doc="Launch a simulated environment (mmtbot is only simulated so it defaults to true)"/>
+    <arg name="gui" default="false" doc="Starts gazebo gui" />
+    <arg name="moveit" default="true" doc="Use MoveIt for motion planning"/>
+    <arg name="rviz" default="true" doc="Launch RViz with movit planner plugin"/>
+    <arg name="db" default="false" doc="load database"/>
+
+    <!-- ###############################################-->
+    <!-- Launch files and nodes -->
+    <!-- ###############################################-->
+    <!-- Simulation mode -->
+    <include if="$(arg sim)" file="$(find mmtbot_gazebo)/launch/mmtbot.launch">
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <!-- Live mode -->
+    <group unless="$(arg moveit)">
+        <!-- mmtbot does not have live mode since it is a simulated robotic system only-->
+    </group>
+
+    <group if="$(arg moveit)">
+        <include file="$(find ur10e_moveit_config)/launch/ur10e_moveit_planning_execution.launch">
+            <arg name="sim" value="$(arg sim)"/>
+            <arg name="load_robot_description" value="false" />
+        </include>
+
+        <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch"/>
+
+        <!-- TODO fix the database path -->
+        <!-- If database loading was enabled, start mongodb as well -->
+        <!--  <include file="$(find ur10_e_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>-->
+    </group>
+
+    <!-- TODO Daniela, should this be here?-->
+    <!-- <node pkg="mmtbot" name="frustum" type="frustum.py" output="screen"/>-->
+
+</launch>
+
