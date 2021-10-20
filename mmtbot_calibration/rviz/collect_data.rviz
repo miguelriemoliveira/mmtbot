@@ -157,8 +157,8 @@ Visualization Manager:
     Queue Size: 10
     Selectable: true
     Size (Pixels): 3
-    Size (m): 0.2
-    Style: Points
+    Size (m): 0.02
+    Style: Spheres
     Topic: /3dlidar/points
     Unreliable: false
     Use Fixed Frame: true
@@ -194,11 +194,20 @@ Visualization Manager:
     Use Fixed Frame: true
     Use rainbow: true
     Value: true
+  - Class: rviz/InteractiveMarkers
+    Enable Transparency: true
+    Enabled: true
+    Name: 3dlidar-ManualDataLabeler-InteractiveMarkers
+    Show Axes: true
+    Show Descriptions: true
+    Show Visual Aids: false
+    Update Topic: 3dlidar/data_labeler/update
+    Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:

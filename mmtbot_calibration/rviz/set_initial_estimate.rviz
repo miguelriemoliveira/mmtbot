@@ -157,8 +157,8 @@ Visualization Manager:
     Queue Size: 10
     Selectable: true
     Size (Pixels): 3
-    Size (m): 0.2
-    Style: Points
+    Size (m): 0.02
+    Style: Spheres
     Topic: /3dlidar/points
     Unreliable: false
     Use Fixed Frame: true
@@ -168,7 +168,7 @@ Visualization Manager:
   Global Options:
     Background Color: 255; 255; 255
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:

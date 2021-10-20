@@ -35,11 +35,11 @@ description_file: "package://mmtbot_gazebo/urdf/mmtbot.urdf.xacro"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
 #bag_file: "$ROS_BAGS/mmtbot/31_03_2021.bag"
-#bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
+bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
 #bag_file: "/home/daniela/bagfiles/mmtbot/21_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/24_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
-bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
+#bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
 #bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
 
@@ -71,7 +71,7 @@ sensors:
     # Example:
     hand_camera:
         link: "hand_camera_rgb_optical_frame"
-        parent_link: "ee_link"
+        parent_link: "flange"
         child_link: "hand_camera_link"
         topic_name: "/hand_camera/rgb/image_raw"
         throttle: 5
