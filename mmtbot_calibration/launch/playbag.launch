@@ -22,7 +22,7 @@
     Sets up image decompressors if needed, reads the urdf robot description.
 
 @arg bag_file  Absolute path to the playing bag.
-    default: $(env ROS_BAGS)/mmtbot/11_03_2021.bag
+    default: $(env ROS_BAGS)/mmtbot/tmp_2021-10-20-10-46-50.bag
 @arg bag_start Playback starting time (in seconds). default: 0.0
 @arg bag_rate  Playback rate. default: 1.0
 @arg use_tfs  Use tfs in the bag file or generate new ones using the urdf, joint state messages and the robot state publisher. default: False
@@ -30,7 +30,7 @@
 
 <launch>
 
-    <arg name="bag_file" default="$(env ROS_BAGS)/mmtbot/11_03_2021.bag"/>
+    <arg name="bag_file" default="$(env ROS_BAGS)/mmtbot/tmp_2021-10-20-10-46-50.bag"/>
     <arg name="bag_start" default="0"/>
     <arg name="bag_rate" default="1"/>
     <arg name="use_tfs" default="False"
@@ -42,8 +42,8 @@
     <!-- Throttle topics -->
     
     
-    <node pkg="topic_tools" type="throttle" name="throttle_hand_camera"
-          args="messages /hand_camera/rgb/image_raw_to_throttle 5 /hand_camera/rgb/image_raw"/>
+    <node pkg="topic_tools" type="throttle" name="throttler_hand_camera"
+          args="messages /hand_camera/rgb/image_raw/compressed_to_throttle 5 /hand_camera/rgb/image_raw/compressed"/>
         
     
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -70,11 +70,11 @@
 
     <group if="$(arg use_tfs)"> <!--Play bag file using tfs, ignore joint states -->
         <node pkg="rosbag" type="play" name="rosbag_play" output="screen"
-              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /joint_states:=/joint_states_null /hand_camera/rgb/image_raw:=/hand_camera/rgb/image_raw_to_throttle"/>
+              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /joint_states:=/joint_states_null /hand_camera/rgb/image_raw/compressed:=/hand_camera/rgb/image_raw/compressed_to_throttle"/>
     </group>
     <group unless="$(arg use_tfs)"> <!--Play bag file ignoring tfs-->
         <node pkg="rosbag" type="play" name="rosbag_play" output="screen"
-              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null /hand_camera/rgb/image_raw:=/hand_camera/rgb/image_raw_to_throttle"/>
+              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null /hand_camera/rgb/image_raw/compressed:=/hand_camera/rgb/image_raw/compressed_to_throttle"/>
     </group>
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 

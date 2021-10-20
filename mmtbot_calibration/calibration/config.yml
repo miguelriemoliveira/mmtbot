@@ -35,11 +35,11 @@ description_file: "package://mmtbot_gazebo/urdf/mmtbot.urdf.xacro"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
 #bag_file: "$ROS_BAGS/mmtbot/31_03_2021.bag"
-bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
+#bag_file: "$ROS_BAGS/mmtbot/11_03_2021.bag"
 #bag_file: "/home/daniela/bagfiles/mmtbot/21_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/24_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
-#bag_file: "$ROS_BAGS/mmtbot/10_03_2021.bag"
+bag_file: "$ROS_BAGS/mmtbot/tmp_2021-10-20-10-46-50.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
 #bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
 
@@ -83,14 +83,14 @@ sensors:
         parent_link: "tripod_plate"
         child_link: "tripod_right_support"
         topic_name: "/world_camera/rgb/image_raw"
-        throttle: 0
+
 
     3dlidar:
         link: "3dlidar"
         parent_link: "tripod_left_support"
         child_link: "3dlidar_base_link"
         topic_name: "/3dlidar/points"
-        throttle: 0
+
 
 #additional_data:
 #  world_camera_point_cloud:
