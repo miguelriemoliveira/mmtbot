@@ -92,7 +92,7 @@
   <!--&lt;!&ndash;  <node name="fake_gripper" pkg="ur_e_gazebo" type="fake_wr-cr200-85.py" respawn="true" output="log"/>&ndash;&gt;-->
 
   <!--  &lt;!&ndash; Start interactive positioning of pattern &ndash;&gt;-->
-  <!--  <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>-->
+    <node name="interactive_pattern" pkg="mmtbot_gazebo" type="interactive_pattern" output="screen"/>
   <!--</launch>-->
 
 

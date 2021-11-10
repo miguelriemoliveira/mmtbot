@@ -152,14 +152,14 @@ Visualization Manager:
     Max Intensity: 4096
     Min Color: 0; 0; 0
     Min Intensity: 0
-    Name: 3dlidar-PointCloud2
+    Name: lidar-PointCloud2
     Position Transformer: ''
     Queue Size: 10
     Selectable: true
     Size (Pixels): 3
     Size (m): 0.02
     Style: Spheres
-    Topic: /3dlidar/points
+    Topic: /lidar/points
     Unreliable: false
     Use Fixed Frame: true
     Use rainbow: true
@@ -182,14 +182,14 @@ Visualization Manager:
     Max Intensity: 4096
     Min Color: 0; 0; 0
     Min Intensity: 0
-    Name: 3dlidar-Labels-PointCloud2
+    Name: lidar-Labels-PointCloud2
     Position Transformer: ''
     Queue Size: 10
     Selectable: true
     Size (Pixels): 3
     Size (m): 0.2
     Style: Spheres
-    Topic: /3dlidar/points/labeled
+    Topic: /lidar/points/labeled
     Unreliable: false
     Use Fixed Frame: true
     Use rainbow: true
@@ -197,11 +197,11 @@ Visualization Manager:
   - Class: rviz/InteractiveMarkers
     Enable Transparency: true
     Enabled: true
-    Name: 3dlidar-ManualDataLabeler-InteractiveMarkers
+    Name: lidar-ManualDataLabeler-InteractiveMarkers
     Show Axes: true
     Show Descriptions: true
     Show Visual Aids: false
-    Update Topic: 3dlidar/data_labeler/update
+    Update Topic: lidar/data_labeler/update
     Value: true
   Enabled: true
   Global Options:

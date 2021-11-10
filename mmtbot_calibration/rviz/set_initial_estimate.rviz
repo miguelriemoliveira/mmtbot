@@ -152,14 +152,14 @@ Visualization Manager:
     Max Intensity: 4096
     Min Color: 0; 0; 0
     Min Intensity: 0
-    Name: 3dlidar-PointCloud2
+    Name: lidar-PointCloud2
     Position Transformer: ''
     Queue Size: 10
     Selectable: true
     Size (Pixels): 3
     Size (m): 0.02
     Style: Spheres
-    Topic: /3dlidar/points
+    Topic: /lidar/points
     Unreliable: false
     Use Fixed Frame: true
     Use rainbow: true

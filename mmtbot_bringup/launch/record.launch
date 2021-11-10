@@ -16,7 +16,7 @@
         /world_camera/rgb/camera_info
         /hand_camera/rgb/image_raw/compressed
         /hand_camera/rgb/camera_info
-        /3dlidar/points
+        /lidar/points
         -o $(arg bag)">
         </node>
 

@@ -39,7 +39,7 @@ description_file: "package://mmtbot_gazebo/urdf/mmtbot.urdf.xacro"
 #bag_file: "/home/daniela/bagfiles/mmtbot/21_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/24_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
-bag_file: "$ROS_BAGS/mmtbot/tmp_2021-10-20-10-46-50.bag"
+bag_file: "$ROS_BAGS/mmtbot/test.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
 #bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
 
@@ -85,11 +85,11 @@ sensors:
         topic_name: "/world_camera/rgb/image_raw"
 
 
-    3dlidar:
-        link: "3dlidar"
+    lidar:
+        link: "lidar"
         parent_link: "tripod_left_support"
-        child_link: "3dlidar_base_link"
-        topic_name: "/3dlidar/points"
+        child_link: "lidar_base_link"
+        topic_name: "/lidar/points"
 
 
 #additional_data:

@@ -99,7 +99,7 @@
     </xacro:tripod_macro>
 
     <!-- Put 3d lidar in the scene-->
-    <xacro:VLP-16 name="3dlidar" parent="tripod_left_support" topic="/3dlidar/points">
+    <xacro:VLP-16 name="lidar" parent="tripod_left_support" topic="/lidar/points">
         <origin xyz="0 0 0.001" rpy="0 0 0" />
     </xacro:VLP-16>
 
