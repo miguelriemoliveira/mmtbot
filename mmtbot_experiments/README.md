@@ -13,12 +13,14 @@ This is to store several experiments of the [mmtbot robotic system](https://gith
 | Bagfile | Link |
 | -------------- | :----------: |
 11_03_2021.bag | [download](https://drive.google.com/file/d/1jkTlIhdSJ_TTkvIu6U-6j6kLHGSzQUo6/view?usp=sharing)
+test.bag | [download](https://uapt33090-my.sharepoint.com/:u:/g/personal/danielarato_ua_pt/EQyry8hklGpPn_JPyUTYOy4BMAIDgD43Tosi6w7TafTiJQ?e=8FopnX)
 
 ### Datasets
 
 | Dataset | Link |
 | -------------- | :----------: |
 train_dataset | [download](https://drive.google.com/drive/folders/13PcP5iHk8gDlB-ghH2vwQ4iIt2crny0L?usp=sharing)
+test_mmtbot | [download](https://uapt33090-my.sharepoint.com/:u:/g/personal/danielarato_ua_pt/EX8xycbjBS9PjEMsbr13bJoBZJcNCRVttXd7xijCj30RHg?e=Jw6VMz)
 
 ### How to use
 
