@@ -47,8 +47,8 @@
         <link name="${prefix}_rgb_frame"/>
 
         <joint name="${prefix}_rgb_optical_joint" type="fixed">
-<!--            <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>-->
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+<!--            <origin xyz="0 0 0" rpy="0 0 0"/>-->
 
             <parent link="${prefix}_rgb_frame"/>
             <child link="${prefix}_rgb_optical_frame"/>
@@ -69,7 +69,7 @@
         </joint>
         <link name="${prefix}_depth_optical_frame"/>
 
-        <gazebo reference="${prefix}_depth_optical_frame">
+        <gazebo reference="${prefix}_depth_frame">
             <sensor type="depth" name="camera">
                 <always_on>true</always_on>
                 <update_rate>10.0</update_rate>
@@ -89,8 +89,11 @@
                 <plugin name="${prefix}_depth_camera_controller" filename="libgazebo_ros_openni_kinect.so">
                     <cameraName>${prefix}</cameraName>
                     <alwaysOn>true</alwaysOn>
-                    <updateRate>0</updateRate>
-                    <!--                  <imageTopicName>rgb/image_raw</imageTopicName>-->
+                    <updateRate>10.0</updateRate>
+<!--                                      <imageTopicName>rgb/image_raw</imageTopicName>-->
+
+                    <imageTopicName>null</imageTopicName>
+                    <cameraInfoTopicName>null/camera_info</cameraInfoTopicName>
                     <depthImageTopicName>depth/image_raw</depthImageTopicName>
                     <pointCloudTopicName>depth/points</pointCloudTopicName>
                     <!--                  <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>-->
@@ -110,7 +113,7 @@
                 </plugin>
             </sensor>
         </gazebo>
-        <gazebo reference="${prefix}_rgb_optical_frame">
+        <gazebo reference="${prefix}_rgb_frame">
             <sensor type="camera" name="camera">
                 <update_rate>30.0</update_rate>
                 <camera>
