@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-        <arg name="bag" default="/tmp/tmp.bag"/>
+        <arg name="bag" default="/home/daniela/bagfiles/tmp.bag"/>
         <arg name="use_sim_time" default="true"/>
 
         <param name="/use_sim_time" value="$(arg use_sim_time)"/>
@@ -17,6 +17,8 @@
         /hand_camera/rgb/image_raw/compressed
         /hand_camera/rgb/camera_info
         /lidar/points
+        /world_camera/depth/points
+        /world_camera/depth/image_raw
         -o $(arg bag)">
         </node>
 

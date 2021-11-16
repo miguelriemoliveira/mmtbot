@@ -98,22 +98,17 @@ Visualization Manager:
     Transport Hint: raw
     Unreliable: false
     Value: false
-  - Class: rviz/Image
-    Enabled: true
-    Image Topic: calibrate/c0/world_camera/rgb/image_raw/labeled
-    Max Value: 1
-    Median window: 5
-    Min Value: 0
-    Name: world_camera-Labels-Image
-    Normalize Range: true
-    Queue Size: 2
-    Transport Hint: raw
-    Unreliable: false
-    Value: false
   - Class: rviz/MarkerArray
     Enabled: true
     Marker Topic: calibrate/labeled_data
     Name: lidar-LabeledData
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: calibrate/labeled_data
+    Name: world_camera_depth-LabeledData
     Namespaces: {}
     Queue Size: 10
     Value: true

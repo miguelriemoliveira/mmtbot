@@ -40,7 +40,7 @@ description_file: "package://mmtbot_gazebo/urdf/mmtbot.urdf.xacro"
 #bag_file: "$ROS_BAGS/mmtbot/24_02_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/08_03_2021.bag"
 #bag_file: "$ROS_BAGS/mmtbot/test.bag"
-bag_file: "$ROS_BAGS/mmtbot/test2.bag"
+bag_file: "$ROS_BAGS/mmtbot/test_depth.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
 #bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
 
@@ -71,26 +71,37 @@ sensors:
     #           respective `camera_info` topic.
     # Example:
     hand_camera:
+        sensor_id: rgb
         link: "hand_camera_rgb_optical_frame"
         parent_link: "flange"
         child_link: "hand_camera_link"
         topic_name: "/hand_camera/rgb/image_raw"
         throttle: 5
-
-    world_camera:
-        link: "world_camera_rgb_optical_frame"
-#        parent_link: "tripod_right_support"
-#        child_link: "world_camera_link"
-        parent_link: "tripod_plate"
-        child_link: "tripod_right_support"
-        topic_name: "/world_camera/rgb/image_raw"
+#
+#    world_camera:
+#        sensor_id: rgb
+#        link: "world_camera_rgb_optical_frame"
+##        parent_link: "tripod_right_support"
+##        child_link: "world_camera_link"
+#        parent_link: "tripod_plate"
+#        child_link: "tripod_right_support"
+#        topic_name: "/world_camera/rgb/image_raw"
 
 
     lidar:
+        sensor_id: lidar
         link: "lidar"
         parent_link: "tripod_left_support"
         child_link: "lidar_base_link"
         topic_name: "/lidar/points"
+
+    world_camera_depth:
+        sensor_id: lidar
+        link: "world_camera_depth_optical_frame"
+        parent_link: "tripod_plate"
+        child_link: "tripod_right_support"
+        topic_name: "/world_camera/depth/points"
+
 
 
 #additional_data:

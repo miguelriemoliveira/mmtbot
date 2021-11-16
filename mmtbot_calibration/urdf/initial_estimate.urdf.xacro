@@ -103,6 +103,7 @@
         <origin xyz="0 0 0.001" rpy="0 0 0" />
     </xacro:VLP-16>
 
+    <!-- Put world camera on top of tripod -->
     <xacro:sensor_astra prefix="world_camera" parent="tripod_right_support">
         <origin xyz="0.02 0.07 0.015" rpy="0 0.0 0" />
     </xacro:sensor_astra>
