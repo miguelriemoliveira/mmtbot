@@ -44,8 +44,6 @@ bag_file: "$ROS_BAGS/mmtbot/test_metadata.bag"
 #bag_file: "$ROS_BAGS/mmtbot/15_03_2021_2.bag"
 #bag_file: "$ROS_BAGS/mmtbot/bag_with_rgbd_point_clouds.bag"
 
-robot_name: "mmtbot"
-
 # You must define a frame of reference for the optimization process.
 # It must exist in the transformation chains of all the sensors which are being calibrated.
 world_link: "world"
