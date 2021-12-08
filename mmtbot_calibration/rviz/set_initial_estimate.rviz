@@ -86,11 +86,11 @@ Visualization Manager:
     Value: true
   - Class: rviz/Image
     Enabled: true
-    Image Topic: /hand_camera/rgb/image_raw
+    Image Topic: /world_camera/depth/image_raw
     Max Value: 1
     Median window: 5
     Min Value: 0
-    Name: hand_camera-Image
+    Name: world_camera_depth-Image
     Normalize Range: true
     Queue Size: 2
     Transport Hint: raw
@@ -99,8 +99,8 @@ Visualization Manager:
   - Class: rviz/Camera
     Enabled: true
     Image Rendering: background and overlay
-    Image Topic: /hand_camera/rgb/image_raw
-    Name: hand_camera-Camera
+    Image Topic: /world_camera/depth/image_raw
+    Name: world_camera_depth-Camera
     Overlay Alpha: 0.5
     Queue Size: 2
     Transport Hint: raw
@@ -109,61 +109,6 @@ Visualization Manager:
     Visibility:
       Value: true
     Zoom Factor: 1
-  - Class: rviz/Image
-    Enabled: true
-    Image Topic: /world_camera/rgb/image_raw
-    Max Value: 1
-    Median window: 5
-    Min Value: 0
-    Name: world_camera-Image
-    Normalize Range: true
-    Queue Size: 2
-    Transport Hint: raw
-    Unreliable: false
-    Value: false
-  - Class: rviz/Camera
-    Enabled: true
-    Image Rendering: background and overlay
-    Image Topic: /world_camera/rgb/image_raw
-    Name: world_camera-Camera
-    Overlay Alpha: 0.5
-    Queue Size: 2
-    Transport Hint: raw
-    Unreliable: false
-    Value: false
-    Visibility:
-      Value: true
-    Zoom Factor: 1
-  - Alpha: 1
-    Autocompute Intensity Bounds: true
-    Autocompute Value Bounds:
-      Max Value: 10
-      Min Value: -10
-      Value: true
-    Axis: Z
-    Channel Name: intensity
-    Class: rviz/PointCloud2
-    Color: 255; 237; 111
-    Color Transformer: RGB8
-    Decay Time: 0
-    Enabled: true
-    Invert Rainbow: false
-    Max Color: 255; 255; 255
-    Max Intensity: 4096
-    Min Color: 0; 0; 0
-    Min Intensity: 0
-    Name: lidar-PointCloud2
-    Position Transformer: ''
-    Queue Size: 10
-    Selectable: true
-    Size (Pixels): 3
-    Size (m): 0.02
-    Style: Spheres
-    Topic: /lidar/points
-    Unreliable: false
-    Use Fixed Frame: true
-    Use rainbow: true
-    Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255

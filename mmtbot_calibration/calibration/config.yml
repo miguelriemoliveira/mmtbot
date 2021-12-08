@@ -69,13 +69,13 @@ sensors:
     #           sensors. Aditionally, it the topic is an image it will automatically use the
     #           respective `camera_info` topic.
     # Example:
-    hand_camera:
-        link: "hand_camera_rgb_optical_frame"
-        parent_link: "flange"
-        child_link: "hand_camera_link"
-        topic_name: "/hand_camera/rgb/image_raw"
-        throttle: 5
-        modality: "rgb"
+#    hand_camera:
+#        link: "hand_camera_rgb_optical_frame"
+#        parent_link: "flange"
+#        child_link: "hand_camera_link"
+#        topic_name: "/hand_camera/rgb/image_raw"
+#        throttle: 5
+#        modality: "rgb"
 ##
 #    world_camera_rgb:
 #        link: "world_camera_rgb_optical_frame"
