@@ -18,6 +18,7 @@
         /hand_camera/rgb/camera_info
         /lidar/points
         /world_camera/depth/image_raw
+        /world_camera/depth/camera_info
         -o $(arg bag)">
         </node>
 
