@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Marker1
       Splitter Ratio: 0.763005793094635
     Tree Height: 436
   - Class: rviz/Selection
@@ -382,6 +381,7 @@ Visualization Manager:
       Value: true
       Visibility:
         Grid: true
+        InteractiveMarkers: true
         ManualDataLabeler-InteractiveMarkers: true
         Marker: true
         RobotModel: true
@@ -396,6 +396,15 @@ Visualization Manager:
       Namespaces:
         "": true
       Queue Size: 100
+      Value: true
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Name: InteractiveMarkers
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /world_camera_depth/data_labeler/update
       Value: true
   Enabled: true
   Global Options:
