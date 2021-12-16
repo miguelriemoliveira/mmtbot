@@ -78,8 +78,8 @@
                     <image>
                         <format>B8G8R8</format>
                         <!--                      <format>RGB_INT8</format>-->
-                        <width>1280</width>
-                        <height>720</height>
+                        <width>640</width>
+                        <height>480</height>
                     </image>
                     <clip>
                         <near>0.10</near>
@@ -122,8 +122,8 @@
                     <image>
                         <format>B8G8R8</format>
                         <!--                      <format>RGB_INT8</format>-->
-                        <width>1280</width>
-                        <height>720</height>
+                        <width>640</width>
+                        <height>480</height>
                     </image>
                     <clip>
                         <near>0.10</near>

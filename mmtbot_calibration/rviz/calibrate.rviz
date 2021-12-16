@@ -88,6 +88,18 @@ Visualization Manager:
     Value: true
   - Class: rviz/Image
     Enabled: true
+    Image Topic: calibrate/c0/world_camera/rgb/image_raw/labeled
+    Max Value: 1
+    Median window: 5
+    Min Value: 0
+    Name: world_camera_rgb-Labels-Image
+    Normalize Range: true
+    Queue Size: 2
+    Transport Hint: raw
+    Unreliable: false
+    Value: false
+  - Class: rviz/Image
+    Enabled: true
     Image Topic: calibrate/c0/world_camera/depth/image_raw/labeled
     Max Value: 1
     Median window: 5
