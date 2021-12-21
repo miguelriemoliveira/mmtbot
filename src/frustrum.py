@@ -70,13 +70,7 @@ def calculate_frustum(w, h, f_x, f_y, frame_id,color):
     fov_x = 2 * math.atan2(w, (2 * f_x))
     fov_y = 2 * math.atan2(h, (2 * f_y))
 
-    print(rad2deg(fov_x), rad2deg(fov_y))
-
-    # x_n = (fov_x * 25.4 * Z_near) / f_x
-    # y_n = (fov_y * 25.4 * Z_near) / f_y
-    #
-    # x_f = (fov_x * 25.4 * Z_far) / f_x
-    # y_f = (fov_y * 25.4 * Z_far) / f_y
+    # print(rad2deg(fov_x), rad2deg(fov_y))
 
     x_n = math.tan(fov_x / 2) * Z_near
     y_n = math.tan(fov_y / 2) * Z_near
