@@ -48,7 +48,7 @@
 
         <joint name="${prefix}_rgb_optical_joint" type="fixed">
             <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
-<!--            <origin xyz="0 0 0" rpy="0 0 0"/>-->
+            <!--            <origin xyz="0 0 0" rpy="0 0 0"/>-->
 
             <parent link="${prefix}_rgb_frame"/>
             <child link="${prefix}_rgb_optical_frame"/>
@@ -67,7 +67,15 @@
             <parent link="${prefix}_depth_frame"/>
             <child link="${prefix}_depth_optical_frame"/>
         </joint>
-        <link name="${prefix}_depth_optical_frame"/>
+        <link name="${prefix}_depth_optical_frame">
+            <visual>
+                <origin xyz="0 0 0.025" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder length="0.05" radius="0.025"/>
+                </geometry>
+                <material name="Orange"></material>
+            </visual>
+        </link>
 
         <gazebo reference="${prefix}_depth_frame">
             <sensor type="depth" name="camera">
@@ -90,7 +98,7 @@
                     <cameraName>${prefix}</cameraName>
                     <alwaysOn>true</alwaysOn>
                     <updateRate>10.0</updateRate>
-<!--                                      <imageTopicName>rgb/image_raw</imageTopicName>-->
+                    <!--                                      <imageTopicName>rgb/image_raw</imageTopicName>-->
 
                     <imageTopicName>null</imageTopicName>
                     <cameraInfoTopicName>null/camera_info</cameraInfoTopicName>
@@ -117,7 +125,7 @@
             <sensor type="camera" name="camera">
                 <update_rate>30.0</update_rate>
                 <camera>
-<!--                    <pose>0 0 0 ${M_PI/2} ${-M_PI/2} 0</pose>-->
+                    <!--                    <pose>0 0 0 ${M_PI/2} ${-M_PI/2} 0</pose>-->
                     <horizontal_fov>${60.0*pi/180.0}</horizontal_fov>
                     <image>
                         <format>B8G8R8</format>
@@ -150,7 +158,7 @@
                     <distortion_k3>0.0</distortion_k3>
                     <distortion_t1>0.0</distortion_t1>
                     <distortion_t2>0.0</distortion_t2>
-<!--                    <pointCloudCutoff>0.4</pointCloudCutoff>-->
+                    <!--                    <pointCloudCutoff>0.4</pointCloudCutoff>-->
                 </plugin>
             </sensor>
         </gazebo>
