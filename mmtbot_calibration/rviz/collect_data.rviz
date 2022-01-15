@@ -134,6 +134,22 @@ Visualization Manager:
     Visibility:
       Value: true
     Zoom Factor: 1
+  - Class: rviz/InteractiveMarkers
+    Enable Transparency: true
+    Enabled: true
+    Name: world_camera_depth-ManualDataLabeler-InteractiveMarkers
+    Show Axes: true
+    Show Descriptions: true
+    Show Visual Aids: false
+    Update Topic: world_camera_depth/data_labeler/update
+    Value: true
+  - Class: rviz/MarkerArray
+    Enabled: true
+    Marker Topic: /sensor_frustum
+    Name: FrustumVisualizationDepthSensors
+    Namespaces: {}
+    Queue Size: 10
+    Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
