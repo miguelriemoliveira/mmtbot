@@ -145,8 +145,8 @@ Visualization Manager:
     Value: true
   - Class: rviz/MarkerArray
     Enabled: true
-    Marker Topic: /sensor_frustum
-    Name: FrustumVisualizationDepthSensors
+    Marker Topic: world_camera_depth/frustum
+    Name: world_camera_depth-Frustum
     Namespaces: {}
     Queue Size: 10
     Value: true
