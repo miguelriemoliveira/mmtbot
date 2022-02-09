@@ -42,7 +42,8 @@ description_file: "package://mmtbot_gazebo/urdf/mmtbot.urdf.xacro"
 #bag_file: "$ROS_BAGS/mmtbot/test.bag"
 #bag_file: "$ROS_BAGS/mmtbot/test_metadata.bag"
 #bag_file: "$ROS_BAGS/tests_depth/test_sim.bag"
-bag_file: "$ROS_BAGS/tests_depth/bag_camera_detected.bag"
+bag_file: "$ROS_BAGS/mmtbot/bag_fixed_cam.bag"
+#bag_file: "$ROS_BAGS/tests_depth/bag_camera_detected.bag"
 #bag_file: "$ROS_BAGS/mmtbot/test_rgbd.bag"
 #bag_file: "$ROS_BAGS/tests_depth/test_real.bag"
 
@@ -73,34 +74,26 @@ sensors:
     #           sensors. Aditionally, it the topic is an image it will automatically use the
     #           respective `camera_info` topic.
     # Example:
-#    hand_camera:
-#        link: "hand_camera_rgb_optical_frame"
-#        parent_link: "flange"
-#        child_link: "hand_camera_link"
-#        topic_name: "/hand_camera/rgb/image_raw"
-#        throttle: 5
-#        modality: "rgb"
+    hand_camera:
+        link: "hand_camera_rgb_optical_frame"
+        parent_link: "flange"
+        child_link: "hand_camera_link"
+        topic_name: "/hand_camera/rgb/image_raw"
+        throttle: 5
+        modality: "rgb"
 ##
     world_camera_rgb:
         link: "world_camera_rgb_optical_frame"
 #        parent_link: "tripod_right_support"
 #        child_link: "world_camera_link"
-        parent_link: "tripod_plate"
-        child_link: "tripod_right_support"
+        parent_link: "world_camera_link"
+        child_link: "world_camera_rgb_frame"
         topic_name: "/world_camera/rgb/image_raw"
         modality: "rgb"
 
-#    world_camera_depth:
-#        link: "camera_rgb_optical_frame"
-#        #        parent_link: "tripod_right_support"
-#        #        child_link: "world_camera_link"
-#        parent_link: "camera_link"
-#        child_link: "camera_depth_frame"
-#        topic_name: "/camera/depth/image_raw"
-#        modality: "depth"
 
     world_camera_depth:
-        link: "world_camera_rgb_optical_frame"
+        link: "world_camera_depth_optical_frame"
         #        parent_link: "tripod_right_support"
         #        child_link: "world_camera_link"
         parent_link: "world_camera_link"
@@ -109,19 +102,12 @@ sensors:
         modality: "depth"
 #
 #
-#    lidar:
-#        link: "lidar"
-#        parent_link: "tripod_left_support"
-#        child_link: "lidar_base_link"
-#        topic_name: "/lidar/points"
-#        modality: "lidar3d"
-
-#    world_camera_depth:
-#        link: "world_camera_depth_optical_frame"
-#        parent_link: "tripod_plate"
-#        child_link: "tripod_right_support"
-#        topic_name: "/world_camera/depth/points"
-#        modality: "lidar3d"
+    lidar:
+        link: "lidar"
+        parent_link: "tripod_left_support"
+        child_link: "lidar_base_link"
+        topic_name: "/lidar/points"
+        modality: "lidar3d"
 
 
 
@@ -186,7 +172,7 @@ calibration_pattern:
 # If your calibration problem is not fully constrained you should anchored one of the sensors.
 # This makes it immovable during the optimization.
 # This is typically referred to as gauge freedom.
-anchored_sensor: ""
+anchored_sensor: "world_camera_rgb"
 
 # Max time delta (in milliseconds) between sensor data messages when creating a collection.
 max_duration_between_msgs: 1000

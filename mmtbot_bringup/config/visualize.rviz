@@ -7,7 +7,7 @@ Panels:
         - /Global Options1
         - /TF1/Frames1
       Splitter Ratio: 0.5822784900665283
-    Tree Height: 868
+    Tree Height: 865
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -92,6 +92,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         hand_camera_link:
           Alpha: 1
           Show Axes: false
@@ -188,6 +189,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         world_camera_link:
           Alpha: 1
           Show Axes: false
@@ -391,8 +393,6 @@ Visualization Manager:
       MoveIt_Planning_Time: 5
       MoveIt_Use_Cartesian_Path: false
       MoveIt_Use_Constraint_Aware_IK: true
-      MoveIt_Warehouse_Host: 127.0.0.1
-      MoveIt_Warehouse_Port: 33829
       MoveIt_Workspace:
         Center:
           X: 0
@@ -412,6 +412,162 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link_inertia:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          flange:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          leg1_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg2_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg3_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg4_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lidar_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulder_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tabletop_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tripod:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod_left_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tripod_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod_right_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wrist_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
         Loop Animation: false
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
@@ -457,6 +613,162 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link_inertia:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          flange:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          hand_camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          leg1_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg2_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg3_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          leg4_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lidar_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulder_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tabletop_table:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tripod:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod_left_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          tripod_plate:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          tripod_right_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          world_camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world_camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          wrist_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
@@ -498,31 +810,31 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.3701569437980652
-        Y: 0.6844116449356079
-        Z: 1.4930180311203003
+        X: 0.006033502519130707
+        Y: -0.06269945204257965
+        Z: 0.7270939350128174
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5297960042953491
+      Pitch: 0.5797961354255676
       Target Frame: <Fixed Frame>
-      Yaw: 4.956790924072266
+      Yaw: 5.181797027587891
     Saved: ~
 Window Geometry:
   Displays:
-    collapsed: false
+    collapsed: true
   HandCamera-Image:
     collapsed: false
-  Height: 1026
-  Hide Left Dock: false
+  Height: 1016
+  Hide Left Dock: true
   Hide Right Dock: false
   MotionPlanning:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001dc000003a4fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000004bb000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f000003a4000000cc00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001fc000001cb0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001700000017fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006700000001d80000021e0000019600ffffff0000000100000233000003a4fc0200000005fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003f0000014f000000a900fffffffb0000002000480061006e006400430061006d006500720061002d0049006d0061006700650100000194000001750000001700fffffffb000000220057006f0072006c006400430061006d006500720061002d0049006d006100670065010000030f000000d40000001700fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004b00000003efc0100000002fb0000000800540069006d00650000000000000004b00000051900fffffffb0000000800540069006d0065010000000000000450000000000000000000000365000003a400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001f30000039efc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000004bb000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073000000003d0000039e000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001fc000001cb0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006700000001cd0000020e0000017d00ffffff00000001000002330000039efc0200000005fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d0000014c000000a400fffffffb0000002000480061006e006400430061006d006500720061002d0049006d006100670065010000003d000001d20000001600fffffffb000000220057006f0072006c006400430061006d006500720061002d0049006d0061006700650100000215000001c60000001600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004b00000003efc0100000002fb0000000800540069006d00650000000000000004b0000004f300fffffffb0000000800540069006d00650100000000000004500000000000000000000004ff0000039e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -531,8 +843,8 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1920
+  Width: 1848
   WorldCamera-Image:
     collapsed: false
-  X: 0
-  Y: 30
+  X: 72
+  Y: 1107

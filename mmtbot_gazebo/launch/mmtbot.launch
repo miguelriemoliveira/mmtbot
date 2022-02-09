@@ -17,7 +17,7 @@
 
   <!-- startup simulated world -->
   <!--  <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
-  <!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>-->
+  <!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/camerabot.world"/>-->
   <!--    <arg name="paused" value="$(arg paused)"/>-->
   <!--&lt;!&ndash;    <arg name="paused" value="true"/>&ndash;&gt;-->
   <!--    <arg name="gui" value="$(arg gui)"/>-->
@@ -45,7 +45,7 @@
 
   <!--  &lt;!&ndash; startup simulated world &ndash;&gt;-->
   <!--  <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
-  <!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/mmtbot.world"/>-->
+  <!--    <arg name="world_name" value="$(find mmtbot_gazebo)/worlds/camerabot.world"/>-->
   <!--    <arg name="paused" value="$(arg paused)"/>-->
   <!--&lt;!&ndash;    <arg name="paused" value="true"/>&ndash;&gt;-->
   <!--    <arg name="gui" value="$(arg gui)"/>-->

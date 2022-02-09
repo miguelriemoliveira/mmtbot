@@ -48,7 +48,7 @@
     <xacro:include filename="$(find mmtbot_description)/urdf/tripod.macro.xacro"/>
 
     <!-- Sensors-->
-<!--    <xacro:include filename="$(find mmtbot_description)/urdf/astra.urdf.xacro" />-->
+<!--    <xacro:include filename="$(find camerabot_description)/urdf/astra.urdf.xacro" />-->
     <xacro:include filename="$(find mmtbot_description)/urdf/atom_astra.urdf.xacro" />
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
