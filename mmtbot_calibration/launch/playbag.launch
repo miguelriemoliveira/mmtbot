@@ -36,7 +36,8 @@
     <arg name="use_tfs" default="False"
          doc="If false ignore tfs in the bag file and use the xacro, joint_state_msgs and robot state publisher to generate new tfs."/>
     <arg name="rviz_file" default="$(find mmtbot_calibration)/rviz/set_initial_estimate.rviz"/>
-    <arg name="description_file" default="$(find mmtbot_calibration)/urdf/initial_estimate.urdf.xacro"/>
+    <arg name="description_file" default="$(find mmtbot_calibration)/urdf/initial_estimate.urdf.xacro" unless="$(arg optimized)"/>
+    <arg name="description_file" default="$(find mmtbot_calibration)/urdf/optimized.urdf.xacro" if="$(arg optimized)"/>
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- Throttle topics -->
@@ -45,8 +46,6 @@
     <node pkg="topic_tools" type="throttle" name="throttler_hand_camera"
           args="messages /hand_camera/rgb/image_raw/compressed_to_throttle 5 /hand_camera/rgb/image_raw/compressed"/>
         
-    
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
