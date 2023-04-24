@@ -26,7 +26,7 @@
     </group>
 
     <group if="$(arg moveit)">
-        <include file="$(find ur10e_moveit_config)/launch/ur10e_moveit_planning_execution.launch">
+        <include file="$(find ur10e_moveit_config)/launch/ur10e_moveit_planning_execution_mmtbot.launch">
             <arg name="sim" value="$(arg sim)"/>
             <arg name="load_robot_description" value="false"/>
         </include>

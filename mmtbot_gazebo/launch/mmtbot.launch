@@ -26,19 +26,19 @@
     <!--&lt;!&ndash;    <arg name="debug" value="true"/>&ndash;&gt; &ndash;&gt;-->
     <!--  </include>-->
 
-    <!-- Start planning with moveit-->
-    <group if="$(arg moveit)">
-        <include file="$(find ur10e_moveit_config)/launch/ur10e_moveit_planning_execution_mmtbot.launch">
-            <arg name="sim" value="$(arg sim)"/>
-            <arg name="load_robot_description" value="false"/>
-        </include>
-    </group>
+<!--    &lt;!&ndash; Start planning with moveit&ndash;&gt;-->
+<!--    <group if="$(arg moveit)">-->
+<!--        <include file="$(find ur10e_moveit_config)/launch/ur10e_moveit_planning_execution_mmtbot.launch">-->
+<!--            <arg name="sim" value="$(arg sim)"/>-->
+<!--            <arg name="load_robot_description" value="false"/>-->
+<!--        </include>-->
+<!--    </group>-->
 
 
     <!-- Start visualization with rviz-->
-    <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch">
-        <!--        <arg name="rviz" value="true"/>-->
-    </include>
+<!--    <include if="$(arg rviz)" file="$(find mmtbot_bringup)/launch/visualize.launch">-->
+<!--        &lt;!&ndash;        <arg name="rviz" value="true"/>&ndash;&gt;-->
+<!--    </include>-->
 
     <!--<launch>-->
     <!--  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />-->
