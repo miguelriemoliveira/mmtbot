@@ -88,7 +88,7 @@ Visualization Manager:
     Value: true
   - Class: rviz/Image
     Enabled: true
-    Image Topic: /hand_camera/rgb/image_raw/c0/labeled2d
+    Image Topic: /hand_camera/rgb/image_raw/c000/labeled2d
     Max Value: 1
     Median window: 5
     Min Value: 0
@@ -98,35 +98,9 @@ Visualization Manager:
     Transport Hint: raw
     Unreliable: false
     Value: false
-  - Class: rviz/MarkerArray
-    Enabled: true
-    Marker Topic: /lidar/points/labeled3d
-    Name: lidar-LabeledData
-    Namespaces: {}
-    Queue Size: 10
-    Value: true
   - Class: rviz/Image
     Enabled: true
-    Image Topic: /world_camera/depth/image_raw/c0/labeled2d
-    Max Value: 1
-    Median window: 5
-    Min Value: 0
-    Name: world_camera_depth-Labels-Image
-    Normalize Range: true
-    Queue Size: 2
-    Transport Hint: raw
-    Unreliable: false
-    Value: false
-  - Class: rviz/MarkerArray
-    Enabled: true
-    Marker Topic: /world_camera/depth/image_raw/labeled3d
-    Name: world_camera_depth-Labels-3D
-    Namespaces: {}
-    Queue Size: 10
-    Value: true
-  - Class: rviz/Image
-    Enabled: true
-    Image Topic: /world_camera/rgb/image_raw/c0/labeled2d
+    Image Topic: /world_camera/rgb/image_raw/c000/labeled2d
     Max Value: 1
     Median window: 5
     Min Value: 0
