@@ -1,0 +1,27 @@
+#!/bin/sh
+# Auto generated on 15/02/2021 08:31:40
+#      ATOMIC Framework
+
+helpFunction()
+{
+   echo ""
+   echo "Usage: $0 -c config_file.yml"
+   echo -e "\t-c Name of specific configuration file that must be inside the package_calibration/calibration/ folder."
+   exit 1
+}
+
+while getopts "c:h" flag
+do
+    case "${flag}" in
+        c ) configfile="$OPTARG" ;;
+        h ) helpFunction;;
+    esac
+done
+
+if test -z "$configfile"
+then
+  rosrun atom_calibration configure_calibration_pkg -n mmtbot_calibration
+else
+  rosrun atom_calibration configure_calibration_pkg -n mmtbot_calibration -cfg $configfile
+fi
+#echo "$configfile"
