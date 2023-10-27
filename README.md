@@ -18,7 +18,10 @@ cd <path_to_catkin_ws>/src
 git clone https://github.com/iris-ua/iris_ur10e -b noetic-devel
 git clone https://github.com/iris-ua/iris_ur10e_calibration -b noetic-devel
 git clone https://bitbucket.org/DataspeedInc/velodyne_simulator -b master
+git clone -b calibration_devel https://github.com/lardemua/universal_robot.git
 ```
+Note: You might have to delete the `ur_kinematics` package from the `iris_ur10e` repository, since it is repeated in `lardemua/universal_robot`. 
+
 
 ##### Install packages:
 ```
